@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lite-server": "lite-server --baseDir=dist/gloomhaven-cards",
-    "gh-pages": "ng deploy"
+    "gh-pages": "ng deploy --base-href=/gloomhaven-cards/"
   },
   "private": true,
   "dependencies": {
