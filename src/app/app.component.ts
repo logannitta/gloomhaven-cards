@@ -19,86 +19,86 @@ export class AppComponent implements OnInit {
 
   basicCards: Card[] = [
     {
-      img: '/assets/cards/Times2.png',
+      img: 'assets/cards/Times2.png',
       damage: 0,
       shuffle: true,
     },
     {
-      img: '/assets/cards/Miss.png',
+      img: 'assets/cards/Miss.png',
       damage: 0,
       shuffle: true,
     },
     {
-      img: '/assets/cards/Minus1.png',
+      img: 'assets/cards/Minus1.png',
       damage: -1,
     },
     {
-      img: '/assets/cards/Minus1.png',
+      img: 'assets/cards/Minus1.png',
       damage: -1,
     },
     {
-      img: '/assets/cards/Minus1.png',
+      img: 'assets/cards/Minus1.png',
       damage: -1,
     },
     {
-      img: '/assets/cards/Minus1.png',
+      img: 'assets/cards/Minus1.png',
       damage: -1,
     },
     {
-      img: '/assets/cards/Minus1.png',
+      img: 'assets/cards/Minus1.png',
       damage: -1,
     },
     {
-      img: '/assets/cards/Minus2.png',
+      img: 'assets/cards/Minus2.png',
       damage: -2,
     },
 
     {
-      img: '/assets/cards/Plus0.png',
+      img: 'assets/cards/Plus0.png',
       damage: 0,
     },
     {
-      img: '/assets/cards/Plus0.png',
+      img: 'assets/cards/Plus0.png',
       damage: 0,
     },
     {
-      img: '/assets/cards/Plus0.png',
+      img: 'assets/cards/Plus0.png',
       damage: 0,
     },
     {
-      img: '/assets/cards/Plus0.png',
+      img: 'assets/cards/Plus0.png',
       damage: 0,
     },
     {
-      img: '/assets/cards/Plus0.png',
+      img: 'assets/cards/Plus0.png',
       damage: 0,
     },
     {
-      img: '/assets/cards/Plus0.png',
+      img: 'assets/cards/Plus0.png',
       damage: 0,
     },
     {
-      img: '/assets/cards/Plus1.png',
+      img: 'assets/cards/Plus1.png',
       damage: 1,
     },
     {
-      img: '/assets/cards/Plus1.png',
+      img: 'assets/cards/Plus1.png',
       damage: 1,
     },
     {
-      img: '/assets/cards/Plus1.png',
+      img: 'assets/cards/Plus1.png',
       damage: 1,
     },
     {
-      img: '/assets/cards/Plus1.png',
+      img: 'assets/cards/Plus1.png',
       damage: 1,
     },
     {
-      img: '/assets/cards/Plus1.png',
+      img: 'assets/cards/Plus1.png',
       damage: 1,
     },
     {
-      img: '/assets/cards/Plus2.png',
+      img: 'assets/cards/Plus2.png',
       damage: 2,
     },
   ];
@@ -126,7 +126,7 @@ export class AppComponent implements OnInit {
 
   addBless() {
     this.deck.push({
-      img: '/assets/cards/Bless.png',
+      img: 'assets/cards/Bless.png',
       damage: 0,
       status: true,
     });
@@ -135,7 +135,7 @@ export class AppComponent implements OnInit {
 
   addCurse() {
     this.deck.push({
-      img: '/assets/cards/Curse.png',
+      img: 'assets/cards/Curse.png',
       damage: 0,
       status: true,
     });
