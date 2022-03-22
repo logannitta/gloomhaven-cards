@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface Card {
   img: string;
@@ -107,7 +108,7 @@ export class AppComponent implements OnInit {
 
   deck: Card[] = [...this.basicCards];
 
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.deck = this.shuffle(this.deck);
@@ -135,7 +136,10 @@ export class AppComponent implements OnInit {
       status: true,
     });
     this.deck = this.shuffle(this.deck);
-    this.toastr.warning('Bless Added');
+    this.snackBar.open('Bless Added', undefined, {
+      duration: 3000,
+      panelClass: 'bless',
+    });
   }
 
   addCurse() {
@@ -145,7 +149,10 @@ export class AppComponent implements OnInit {
       status: true,
     });
     this.deck = this.shuffle(this.deck);
-    this.toastr.error('Curse Added');
+    this.snackBar.open('Curse Added', undefined, {
+      duration: 3000,
+      panelClass: 'curse',
+    });
   }
 
   drawCard() {

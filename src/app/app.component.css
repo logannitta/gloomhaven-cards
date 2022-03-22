@@ -15,33 +15,18 @@
   font-weight: 900;
 }
 
-html {
-  height: 100vh;
-  /* overflow: hidden; */
-  background-color: tan;
+.buttons {
+  margin: 8px;
 }
 
-body {
-  margin: 0;
-  background-color: tan;
+.buttons button {
+  margin: 0 4px;
 }
 
-button {
-  border-width: none;
-  padding: none;
-  margin: none;
-  background-color: tan;
-  border-radius: 4px;
+::ng-deep.bless {
+  background-color: #673ab7;
 }
-
-.curse {
-  background-color: #7209b7;
-  color: gold;
-  margin: 8px 3px;
-}
-
-.bless {
-  background-color: gold;
-  color: #7209b7;
-  margin: 8px 3px;
+::ng-deep.curse {
+  background-color: #ffd740;
+  color: black;
 }
