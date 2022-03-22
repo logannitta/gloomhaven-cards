@@ -1,4 +1,4 @@
-#drawnCards img {
+#pulledCards img {
   width: 300px;
   height: 203px;
 }
@@ -16,9 +16,13 @@
 }
 
 html {
-  margin: auto 10px;
-  width: auto;
-  height: 1000px;
+  height: 100vh;
+  /* overflow: hidden; */
+  background-color: tan;
+}
+
+body {
+  margin: 0;
   background-color: tan;
 }
 
@@ -33,9 +37,11 @@ button {
 .curse {
   background-color: #7209b7;
   color: gold;
+  margin: 8px 3px;
 }
 
 .bless {
   background-color: gold;
   color: #7209b7;
+  margin: 8px 3px;
 }

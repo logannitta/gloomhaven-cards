@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 interface Card {
   img: string;
@@ -14,8 +15,6 @@ interface Card {
 })
 export class AppComponent implements OnInit {
   title = 'gloomhavenCards';
-
-  drawnCard: Card | null = null;
 
   basicCards: Card[] = [
     {
@@ -103,7 +102,12 @@ export class AppComponent implements OnInit {
     },
   ];
 
+  pulledCards: Card[] = [];
+  showingShuffleCard = false;
+
   deck: Card[] = [...this.basicCards];
+
+  constructor(private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.deck = this.shuffle(this.deck);
@@ -131,6 +135,7 @@ export class AppComponent implements OnInit {
       status: true,
     });
     this.deck = this.shuffle(this.deck);
+    this.toastr.warning('Bless Added');
   }
 
   addCurse() {
@@ -140,12 +145,20 @@ export class AppComponent implements OnInit {
       status: true,
     });
     this.deck = this.shuffle(this.deck);
+    this.toastr.error('Curse Added');
   }
 
   drawCard() {
-    console.log(this.deck);
-    this.drawnCard = this.deck.splice(0, 1)[0];
-    if (this.drawnCard?.shuffle) {
+    if (this.showingShuffleCard) {
+      this.pulledCards = [];
+      this.showingShuffleCard = false;
+    }
+
+    const drawnCard = this.deck.splice(0, 1)[0];
+    this.pulledCards.unshift(drawnCard);
+
+    if (drawnCard?.shuffle) {
+      this.showingShuffleCard = true;
       const statusCards = this.deck.filter((card: Card) => {
         return card.status;
       });

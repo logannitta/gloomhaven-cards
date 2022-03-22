@@ -24,9 +24,9 @@
       <button class="bless" (click)="addBless()">Bless</button>
       <button class="curse" (click)="addCurse()">Curse</button>
     </div>
-    <div class="flex-container" *ngIf="drawnCard">
-      <div id="drawnCards">
-        <img [src]="drawnCard?.img" alt="" />
+    <div class="flex-container" *ngFor="let card of pulledCards">
+      <div id="pulledCards">
+        <img [src]="card?.img" alt="" />
       </div>
     </div>
   </body>
