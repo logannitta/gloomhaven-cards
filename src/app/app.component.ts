@@ -176,5 +176,9 @@ export class AppComponent implements OnInit {
     });
     this.deck = this.shuffle([...this.basicCards, ...statusCards]);
     this.needShuffle = true;
+    this.snackBar.open('Shuffled', undefined, {
+      duration: 3000,
+      panelClass: 'shuffleComplete',
+    });
   }
 }
