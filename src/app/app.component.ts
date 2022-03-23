@@ -102,9 +102,9 @@ export class AppComponent implements OnInit {
       damage: 2,
     },
   ];
-
   pulledCards: Card[] = [];
   showingShuffleCard = false;
+  needShuffle = true;
 
   deck: Card[] = [...this.basicCards];
 
@@ -165,11 +165,16 @@ export class AppComponent implements OnInit {
     this.pulledCards.unshift(drawnCard);
 
     if (drawnCard?.shuffle) {
-      this.showingShuffleCard = true;
-      const statusCards = this.deck.filter((card: Card) => {
-        return card.status;
-      });
-      this.deck = this.shuffle([...this.basicCards, ...statusCards]);
+      this.needShuffle = false;
     }
+  }
+
+  mix() {
+    this.showingShuffleCard = true;
+    const statusCards = this.deck.filter((card: Card) => {
+      return card.status;
+    });
+    this.deck = this.shuffle([...this.basicCards, ...statusCards]);
+    this.needShuffle = true;
   }
 }

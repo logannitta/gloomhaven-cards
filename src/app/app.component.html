@@ -7,6 +7,14 @@
 <div class="flex-container buttons">
   <button mat-raised-button color="primary" (click)="addBless()">Bless</button>
   <button mat-raised-button color="accent" (click)="addCurse()">Curse</button>
+  <button
+    mat-raised-button
+    [disabled]="needShuffle"
+    color="warn"
+    (click)="mix()"
+  >
+    Shuffle
+  </button>
 </div>
 <div class="flex-container" *ngFor="let card of pulledCards">
   <div id="pulledCards">
