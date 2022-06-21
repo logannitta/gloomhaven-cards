@@ -1,0 +1,10 @@
+mat-toolbar {
+  background-color: rgb(162, 92, 92);
+  font-family: "Pirata One", cursive;
+  font-size: xx-large;
+}
+
+.icons {
+  height: 15px;
+  margin: auto;
+}

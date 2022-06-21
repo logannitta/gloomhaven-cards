@@ -1,19 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Character, Perk } from './character';
 
-export interface Perk {
-  name: string;
-  completed: boolean;
-  text: string;
-}
-
-@Component({
-  selector: 'app-brute',
-  templateUrl: './brute.component.html',
-  styleUrls: ['./brute.component.css'],
-})
-export class BruteComponent implements OnInit {
-  constructor() {}
-
+export class Brute implements Character {
+  name = 'Brute';
+  health = 8;
   perks: Perk[] = [
     { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
     {
@@ -67,6 +56,4 @@ export class BruteComponent implements OnInit {
       text: 'Ignore negative item effects and add one (+1) card',
     },
   ];
-
-  ngOnInit(): void {}
 }

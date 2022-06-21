@@ -1,0 +1,14 @@
+{{ characterClass?.name }}
+{{ characterClass?.health }}
+<!-- {{ characterClass?.perks | json }} -->
+<app-perk-list
+  [perks]="characterClass?.perks"
+  (addOrRemovePerk)="addOrRemovePerk($event)"
+></app-perk-list>
+<app-deck
+  [deck]="deck"
+  [pulledCards]="pulledCards"
+  (bless)="addBless()"
+  (curse)="addCurse()"
+  (mix)="mixClicked()"
+></app-deck>

@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let perk of perks">
+    <mat-checkbox
+      color="primary"
+      [(ngModel)]="perk.completed"
+      (change)="addPerk(perk)"
+    >
+      {{ perk.text }}
+    </mat-checkbox>
+  </li>
+</ul>

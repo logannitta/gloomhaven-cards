@@ -1,0 +1,59 @@
+import { Character, Perk } from './character';
+
+export class Sawbones implements Character {
+  name = 'Sawbones';
+  health = 12;
+  perks: Perk[] = [
+    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
+    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
+    { name: 'Primary', completed: false, text: 'Remove four (+0) cards' },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Replace one (+0) card with one (+2) card',
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Replace one (+0) card with one (+2) card',
+    },
+    { name: 'Primary', completed: false, text: 'Add one rolling (+2) card' },
+    { name: 'Primary', completed: false, text: 'Add one rolling (+2) card' },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add one (+1) [Immobilize] card',
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add one (+1) [Immobilize] card',
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add two rolling [Wound] cards',
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add two rolling [Wound] cards',
+    },
+    { name: 'Primary', completed: false, text: 'Add one rolling [Stun] card' },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add one rolling [Heal 3 Self] card',
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add one rolling [Heal 3 Self] card',
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Add one rolling (+0) [Refresh an Item] card',
+    },
+  ];
+}

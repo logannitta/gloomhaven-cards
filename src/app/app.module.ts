@@ -1,23 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { ToastrModule } from 'ngx-toastr';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BruteComponent } from './brute/brute.component';
+import { HeaderModule } from './header/header.module';
 
 @NgModule({
-  declarations: [AppComponent, BruteComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-center' }),
-    MatButtonModule,
-    MatSnackBarModule,
-    MatCheckboxModule,
+    AppRoutingModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

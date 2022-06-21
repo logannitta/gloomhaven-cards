@@ -1,0 +1,22 @@
+<div class="flex-container">
+  <button mat-stroked-button (click)="drawCard()">
+    <img src="assets/cards/CardBack.png" alt="" />
+  </button>
+</div>
+<div class="flex-container buttons">
+  <button mat-raised-button color="primary" (click)="addBless()">Bless</button>
+  <button mat-raised-button color="accent" (click)="addCurse()">Curse</button>
+  <button
+    mat-raised-button
+    [disabled]="needShuffle"
+    color="warn"
+    (click)="mixClicked()"
+  >
+    Shuffle
+  </button>
+</div>
+<div class="flex-container" *ngFor="let card of pulledCards">
+  <div id="pulledCards">
+    <img [src]="card?.img" alt="" />
+  </div>
+</div>
