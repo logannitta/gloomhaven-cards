@@ -8,6 +8,11 @@ import { MenuCloseReason } from '@angular/material/menu/menu';
 })
 export class HeaderComponent implements OnInit {
   characters = [
+    {
+      text: 'Basic',
+      value: 'basic',
+      icon: 'assets/classes/Base.png',
+    },
     { text: 'Brute', value: 'brute', icon: 'assets/classes/Brute.png' },
     {
       text: 'Cragheart',
@@ -113,11 +118,6 @@ export class HeaderComponent implements OnInit {
       text: 'Voidwarden',
       value: 'voidwarden',
       icon: 'assets/classes/Voidwarden.png',
-    },
-    {
-      text: 'Basic',
-      value: 'basic',
-      icon: 'assets/classes/Base.png',
     },
   ];
 

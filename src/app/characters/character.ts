@@ -26,6 +26,8 @@ export interface Perk {
   name: string;
   completed: boolean;
   text: string;
+  addAction?: Function;
+  removeAction?: Function;
 }
 
 export interface Character {
@@ -35,6 +37,7 @@ export interface Character {
 }
 
 export const CharacterMap: { [key: string]: any } = {
+  basic: Basic,
   brute: Brute,
   cragheart: Cragheart,
   mindthief: Mindthief,
@@ -57,5 +60,4 @@ export const CharacterMap: { [key: string]: any } = {
   hatchet: Hatchet,
   redGuard: RedGuard,
   voidwarden: Voidwarden,
-  basic: Basic,
 };

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Character, CharacterMap, Perk } from '../characters/character';
-import { basicDeck, Card } from '../deck/basic-deck';
+import {
+  basicCardIds,
+  basicCards,
+  basicDeck,
+  Card,
+  CardId,
+} from '../deck/basic-deck';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,11 +17,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./class.component.css'],
 })
 export class ClassComponent implements OnInit {
-  basicCards: Card[] = basicDeck;
   characterClass: Character | undefined;
-
   deck: Card[] = [];
   pulledCards: Card[] = [];
+  perkActionsRan: any[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +35,7 @@ export class ClassComponent implements OnInit {
       console.log(this.characterClass);
       this.deck = this.shuffle([...basicDeck]);
       this.pulledCards = [];
+      this.perkActionsRan = [];
     });
   }
 
@@ -48,12 +54,24 @@ export class ClassComponent implements OnInit {
     return cards;
   }
 
-  addBless() {
-    this.deck.push({
-      img: 'assets/cards/Bless.png',
-      damage: 0,
-      status: true,
+  mixClicked() {
+    // this.deck = this.shuffle([...this.specialCards, ...basicDeck]);
+    const blessingsAndCurses = this.deck.filter((card: Card) => {
+      return card.id === CardId.bless || card.id === CardId.curse;
     });
+    let deck = [...basicDeck];
+    this.perkActionsRan.forEach((fn: Function) => (deck = fn(deck)));
+    this.deck = this.shuffle([...deck, ...blessingsAndCurses]);
+
+    console.log(this.deck);
+    this.snackBar.open('Shuffled', undefined, {
+      duration: 3000,
+      panelClass: 'shuffleComplete',
+    });
+  }
+
+  addBless() {
+    this.deck.push(basicCards.bless);
     this.deck = this.shuffle(this.deck);
     this.snackBar.open('Bless Added', undefined, {
       duration: 3000,
@@ -62,11 +80,7 @@ export class ClassComponent implements OnInit {
   }
 
   addCurse() {
-    this.deck.push({
-      img: 'assets/cards/Curse.png',
-      damage: 0,
-      status: true,
-    });
+    this.deck.push(basicCards.curse);
     this.deck = this.shuffle(this.deck);
     this.snackBar.open('Curse Added', undefined, {
       duration: 3000,
@@ -74,20 +88,11 @@ export class ClassComponent implements OnInit {
     });
   }
 
-  mixClicked() {
-    const statusCards = this.deck.filter((card: Card) => {
-      return card.status;
-    });
-    this.deck = this.shuffle([...this.basicCards, ...statusCards]);
-    this.snackBar.open('Shuffled', undefined, {
-      duration: 3000,
-      panelClass: 'shuffleComplete',
-    });
-  }
-
   addOrRemovePerk(perk: Perk) {
-    if (perk.completed) {
-      console.log('Perk Added');
+    if (perk.completed && perk.addAction) {
+      this.deck = perk.addAction([...this.deck]);
+      this.perkActionsRan.push(perk.addAction);
+      console.log(this.deck);
     } else {
       console.log('Perk Removed');
     }
