@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Character, CharacterMap, Perk } from '../characters/character';
-import {
-  basicCardIds,
-  basicCards,
-  basicDeck,
-  Card,
-  CardId,
-} from '../deck/basic-deck';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ToastrService } from 'ngx-toastr';
+import { basicCards, basicDeck, Card, CardId } from '../deck/basic-deck';
 
 @Component({
   selector: 'app-class',
@@ -22,11 +15,7 @@ export class ClassComponent implements OnInit {
   pulledCards: Card[] = [];
   perkActionsRan: any[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private toastr: ToastrService,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private route: ActivatedRoute, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -90,7 +79,7 @@ export class ClassComponent implements OnInit {
 
   addOrRemovePerk(perk: Perk) {
     if (perk.completed && perk.addAction) {
-      this.deck = perk.addAction([...this.deck]);
+      this.deck = this.shuffle(perk.addAction([...this.deck]));
       this.perkActionsRan.push(perk.addAction);
       console.log(this.deck);
     } else {
