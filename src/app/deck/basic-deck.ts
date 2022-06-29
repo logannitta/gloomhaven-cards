@@ -13,6 +13,14 @@ export enum CardId {
   plagueheraldRollingCurse,
   plagueheraldRollingImmobilize,
   plagueheraldRollingStun,
+  brutePlus3,
+  bruteRollingPush1,
+  bruteRollingPierce3,
+  bruteRollingStun,
+  bruteRollingDisarm,
+  bruteRollingMuddle,
+  bruteRollingAddTarget,
+  brutePlus1Shield1Self,
 }
 
 export const basicCardIds = [
