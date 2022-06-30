@@ -44,8 +44,6 @@ export const bruteCards = {
     name: 'Plus 1 Shield 1 Self',
     id: CardId.brutePlus1Shield1Self,
   },
-
-  // finish
 };
 
 export const bruteActions = {
@@ -75,7 +73,6 @@ export const bruteActions = {
   'Add one Plus 1 Shield 1 Self': (deck: Card[]) => {
     return [...deck, bruteCards.plus1Shield1Self];
   },
-  // finish
 };
 
 export class Brute implements Character {
