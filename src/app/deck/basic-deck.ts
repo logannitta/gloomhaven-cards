@@ -21,6 +21,16 @@ export enum CardId {
   bruteRollingMuddle,
   bruteRollingAddTarget,
   brutePlus1Shield1Self,
+  beastTyrantPlus1Immobilize,
+  beastTyrantPlus1Wound,
+  beastTyrantRollingEarth,
+  beastTyrantRollingHeal1Self,
+  berserkerPlus2Fire,
+  berserkerRollingHeal1Self,
+  berserkerRollingPlus1Disarm,
+  berserkerRollingPlus2,
+  berserkerRollingStun,
+  berserkerRollingWound,
 }
 
 export const basicCardIds = [

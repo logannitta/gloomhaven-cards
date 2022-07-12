@@ -1,49 +1,48 @@
 import { basicCards, Card, CardId } from '../deck/basic-deck';
 
+export const removeCard = (
+  cardId: CardId,
+  deck: Card[],
+  cardsToAdd: Card[] = []
+) => {
+  const index = deck.findIndex((card) => card.id === cardId);
+  if (index !== undefined) {
+    deck.splice(index, 1, ...cardsToAdd);
+  }
+};
+
 export const BasicPerkAction = {
   'Replace one -2 with one +0 card': (deck: Card[]) => {
-    const newDeck = deck.filter((card) => card.id !== CardId.minus2);
-    newDeck.push(basicCards.plus0);
+    const newDeck = [...deck];
+    removeCard(CardId.minus2, newDeck, [basicCards.plus0]);
     return newDeck;
   },
 
   'Replace one -1 with one +1 card': (deck: Card[]) => {
     const newDeck = [...deck];
-    const firstMinusOneIndex = newDeck.findIndex(
-      (card) => card.id === CardId.minus1
-    );
-    if (firstMinusOneIndex !== undefined) {
-      newDeck.splice(firstMinusOneIndex, 1, basicCards.plus1);
-    }
+    removeCard(CardId.minus1, newDeck, [basicCards.plus1]);
     return newDeck;
   },
 
   'Replace one +0 with one +2 card': (deck: Card[]) => {
     const newDeck = [...deck];
-    const firstPlusZeroIndex = newDeck.findIndex(
-      (card) => card.id === CardId.plus0
-    );
-    if (firstPlusZeroIndex !== undefined) {
-      newDeck.splice(firstPlusZeroIndex, 1, basicCards.plus2);
-    }
+    removeCard(CardId.plus0, newDeck, [basicCards.plus2]);
     return newDeck;
   },
 
   'Remove two -1 cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    const firstMinusOneIndex = newDeck.findIndex(
-      (card) => card.id === CardId.minus1
-    );
-    if (firstMinusOneIndex !== undefined) {
-      newDeck.splice(firstMinusOneIndex, 1);
-    }
+    removeCard(CardId.minus1, newDeck);
+    removeCard(CardId.minus1, newDeck);
+    return newDeck;
+  },
 
-    const secondMinusOneIndex = newDeck.findIndex(
-      (card) => card.id === CardId.minus1
-    );
-    if (secondMinusOneIndex !== undefined) {
-      newDeck.splice(secondMinusOneIndex, 1);
-    }
+  'Remove four +0 cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.plus0, newDeck);
+    removeCard(CardId.plus0, newDeck);
+    removeCard(CardId.plus0, newDeck);
+    removeCard(CardId.plus0, newDeck);
     return newDeck;
   },
 
