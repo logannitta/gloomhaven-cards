@@ -45,6 +45,11 @@ export enum CardId {
   summonerRollingWound,
   summonerRollingHeal1Self,
   summonerPlus2,
+  cragheartRollingPush2,
+  cragheartRollingEarth,
+  cragheartRollingAir,
+  cragheartPlus2Muddle,
+  cragheartPlus1Immobilize,
 }
 
 export const basicCardIds = [
