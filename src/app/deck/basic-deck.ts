@@ -31,6 +31,20 @@ export enum CardId {
   berserkerRollingPlus2,
   berserkerRollingStun,
   berserkerRollingWound,
+  quartermasterPlus0RefreshItem,
+  quartermasterRollingAddTarget,
+  quartermasterRollingMuddle,
+  quartermasterRollingPierce3,
+  quartermasterRollingPlus1,
+  quartermasterRollingStun,
+  summonerRollingAir,
+  summonerRollingDark,
+  summonerRollingEarth,
+  summonerRollingFire,
+  summonerRollingPoison,
+  summonerRollingWound,
+  summonerRollingHeal1Self,
+  summonerPlus2,
 }
 
 export const basicCardIds = [

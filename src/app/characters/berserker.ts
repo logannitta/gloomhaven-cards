@@ -61,6 +61,7 @@ export const berserkerActions = {
   'Replace +0 with rolling +2': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus0, newDeck, [berserkerCards.rollingPlus2]);
+    return newDeck;
   },
 };
 
