@@ -73,6 +73,14 @@ export enum CardId {
   doomstalkerPlus1Wound,
   doomstalkerPlus1Poison,
   doomstalkerPlus1Immobilize,
+  elementalistPlus0AddTarget,
+  elementalistPlus0Stun,
+  elementalistPlus1Wound,
+  elementalistPlus1Push1,
+  elementalistPlus0Ice,
+  elementalistPlus0Fire,
+  elementalistPlus0Earth,
+  elementalistPlus0Air,
 }
 
 export const basicCardIds = [
