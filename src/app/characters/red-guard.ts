@@ -1,11 +1,22 @@
 import { Character, Perk } from './character';
+import { BasicPerkAction } from './perk-actions';
 
 export class RedGuard implements Character {
   name = 'Red Guard';
   health = 12;
   perks: Perk[] = [
-    { name: 'Primary', completed: false, text: 'Remove four (+0) cards' },
-    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Remove four (+0) cards',
+      addAction: BasicPerkAction['Remove four +0 cards'],
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Remove two (-1) cards',
+      addAction: BasicPerkAction['Remove two -1 cards'],
+    },
     {
       name: 'Primary',
       completed: false,
@@ -15,11 +26,13 @@ export class RedGuard implements Character {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
+      addAction: BasicPerkAction['Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
+      addAction: BasicPerkAction['Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',

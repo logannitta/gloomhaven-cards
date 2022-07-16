@@ -1,15 +1,27 @@
 import { Character, Perk } from './character';
+import { BasicPerkAction } from './perk-actions';
 
 export class Tinkerer implements Character {
   name = 'Tinkerer';
   health = 12;
   perks: Perk[] = [
-    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
-    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Remove two (-1) cards',
+      addAction: BasicPerkAction['Remove two -1 cards'],
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Remove two (-1) cards',
+      addAction: BasicPerkAction['Remove two -1 cards'],
+    },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-2) card with one (+0) card',
+      addAction: BasicPerkAction['Replace one -2 with one +0 card'],
     },
     { name: 'Primary', completed: false, text: 'Add two (+1) cards' },
     { name: 'Primary', completed: false, text: 'Add one (+3) card' },

@@ -6,9 +6,10 @@ export const removeCard = (
   cardsToAdd: Card[] = []
 ) => {
   const index = deck.findIndex((card) => card.id === cardId);
-  if (index !== undefined) {
-    deck.splice(index, 1, ...cardsToAdd);
+  if (index === -1) {
+    throw new Error('Card Not Found');
   }
+  deck.splice(index, 1, ...cardsToAdd);
 };
 
 export const BasicPerkAction = {

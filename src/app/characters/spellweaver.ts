@@ -1,19 +1,27 @@
 import { Character, Perk } from './character';
+import { BasicPerkAction } from './perk-actions';
 
 export class Spellweaver implements Character {
   name = 'Spellweaver';
   health = 8;
   perks: Perk[] = [
-    { name: 'Primary', completed: false, text: 'Remove four (+0) cards' },
     {
       name: 'Primary',
       completed: false,
-      text: 'Replace one (-1) card with one (+1) card',
+      text: 'Remove four (+0) cards',
+      addAction: BasicPerkAction['Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
+      addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Replace one (-1) card with one (+1) card',
+      addAction: BasicPerkAction['Replace one -1 with one +1 card'],
     },
     { name: 'Primary', completed: false, text: 'Add two (+1) cards' },
     { name: 'Primary', completed: false, text: 'Add two (+1) cards' },

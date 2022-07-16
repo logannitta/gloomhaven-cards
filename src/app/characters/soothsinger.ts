@@ -1,11 +1,22 @@
 import { Character, Perk } from './character';
+import { BasicPerkAction } from './perk-actions';
 
 export class Soothsinger implements Character {
   name = 'Soothsinger';
   health = 12;
   perks: Perk[] = [
-    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
-    { name: 'Primary', completed: false, text: 'Remove two (-1) cards' },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Remove two (-1) cards',
+      addAction: BasicPerkAction['Remove two -1 cards'],
+    },
+    {
+      name: 'Primary',
+      completed: false,
+      text: 'Remove two (-1) cards',
+      addAction: BasicPerkAction['Remove two -1 cards'],
+    },
     { name: 'Primary', completed: false, text: 'Remove one (-2) card' },
     {
       name: 'Primary',

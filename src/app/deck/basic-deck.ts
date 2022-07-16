@@ -90,6 +90,20 @@ export enum CardId {
   hatchetPlus1Poison,
   hatchetPlus1Immobilize,
   hatchetPlus1Push2,
+  mindthiefPlus2Ice,
+  mindthiefRollingDisarm,
+  mindthiefRollingImmobilize,
+  mindthiefRollingMuddle,
+  mindthiefRollingPlus1,
+  mindthiefRollingPull1,
+  mindthiefRollingStun,
+  nightshroudMinus1Dark,
+  nightshroudPlus1Dark,
+  nightshroudPlus1Invisible,
+  nightshroudRollingAddTarget,
+  nightshroudRollingCurse,
+  nightshroudRollingHeal1Self,
+  nightshroudRollingMuddle,
 }
 
 export const basicCardIds = [

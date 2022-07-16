@@ -79,7 +79,13 @@ export class ClassComponent implements OnInit {
 
   addOrRemovePerk(perk: Perk) {
     if (perk.completed && perk.addAction) {
-      this.deck = this.shuffle(perk.addAction([...this.deck]));
+      const success = perk.addAction([...this.deck]);
+      if (!success) {
+        alert('Failure');
+        console.log(success);
+        return;
+      }
+      this.deck = this.shuffle(success);
       this.perkActionsRan.push(perk.addAction);
       console.log(this.deck);
     } else {
