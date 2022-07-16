@@ -26,7 +26,7 @@ export class Spellweaver implements Character {
     { name: 'Primary', completed: false, text: 'Add two (+1) cards' },
     { name: 'Primary', completed: false, text: 'Add two (+1) cards' },
     { name: 'Primary', completed: false, text: 'Add one (+0) [Stun] card' },
-    // { name: 'Primary', completed: false, text: 'Add one (+1) [Wound] card' },
+    { name: 'Primary', completed: false, text: 'Add one (+1) [Wound] card' },
     {
       name: 'Primary',
       completed: false,
