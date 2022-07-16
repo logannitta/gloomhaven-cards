@@ -104,6 +104,12 @@ export enum CardId {
   nightshroudRollingCurse,
   nightshroudRollingHeal1Self,
   nightshroudRollingMuddle,
+  redguardPlus1FireLight,
+  redguardPlus2Light,
+  redguardPlus2Fire,
+  redguardPlus1Wound,
+  redguardPlus1Shield1Self,
+  redguardPlus1Immobilize,
 }
 
 export const basicCardIds = [
