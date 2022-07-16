@@ -110,6 +110,17 @@ export enum CardId {
   redguardPlus1Wound,
   redguardPlus1Shield1Self,
   redguardPlus1Immobilize,
+  sawbonesPlus0RefreshItem,
+  sawbonesRollingWound,
+  sawbonesRollingStun,
+  sawbonesRollingPlus2,
+  sawbonesRollingHeal3Self,
+  sawbonesPlus1Immobilize,
+  scoundrelRollingInvisible,
+  scoundrelRollingMuddle,
+  scoundrelRollingPoison,
+  scoundrelRollingPierce3,
+  scoundrelRollingPlus1,
 }
 
 export const basicCardIds = [
