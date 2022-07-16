@@ -121,6 +121,16 @@ export enum CardId {
   scoundrelRollingPoison,
   scoundrelRollingPierce3,
   scoundrelRollingPlus1,
+  soothsingerPlus0Stun,
+  soothsingerPlus1Disarm,
+  soothsingerPlus1Immobilize,
+  soothsingerPlus2Curse,
+  soothsingerPlus2Poison,
+  soothsingerPlus2Wound,
+  soothsingerPlus3Muddle,
+  soothsingerPlus4,
+  soothsingerRollingCurse,
+  soothsingerRollingPlus1,
 }
 
 export const basicCardIds = [
