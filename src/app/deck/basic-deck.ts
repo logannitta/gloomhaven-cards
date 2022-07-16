@@ -81,6 +81,15 @@ export enum CardId {
   elementalistPlus0Fire,
   elementalistPlus0Earth,
   elementalistPlus0Air,
+  hatchetPlus0Stun,
+  hatchetPlus3,
+  hatchetPlus2Muddle,
+  hatchetPlus2Air,
+  hatchetPlus1Wound,
+  hatchetPlus1Stun,
+  hatchetPlus1Poison,
+  hatchetPlus1Immobilize,
+  hatchetPlus1Push2,
 }
 
 export const basicCardIds = [
