@@ -88,6 +88,12 @@ export const mindthiefActions = {
     removeCard(CardId.plus1, newDeck, [basicCards.plus2]);
     return newDeck;
   },
+  'Undo Replace two (+1) cards with two (+2) cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.plus2, newDeck, [basicCards.plus1]);
+    removeCard(CardId.plus2, newDeck, [basicCards.plus1]);
+    return newDeck;
+  },
 };
 
 export class Mindthief implements Character {
@@ -99,30 +105,36 @@ export class Mindthief implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove four (+0) cards',
       addAction: BasicPerkAction['Remove four +0 cards'],
+      removeAction: BasicPerkAction['Undo Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace two (+1) cards with two (+2) cards',
       addAction: mindthiefActions['Replace two (+1) cards with two (+2) cards'],
+      removeAction:
+        mindthiefActions['Undo Replace two (+1) cards with two (+2) cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-2) card with one (+0) card',
       addAction: BasicPerkAction['Replace one -2 with one +0 card'],
+      removeAction: BasicPerkAction['Undo Replace one -2 with one +0 card'],
     },
     {
       name: 'Primary',

@@ -88,8 +88,11 @@ export class ClassComponent implements OnInit {
       this.deck = this.shuffle(success);
       this.perkActionsRan.push(perk.addAction);
       console.log(this.deck);
-    } else {
-      console.log('Perk Removed');
+    } else if (perk.removeAction) {
+      const perkRemoved = perk.removeAction([...this.deck]);
+      this.deck = this.shuffle(perkRemoved);
+      this.perkActionsRan.push(perk.removeAction);
+      console.log('Perk Removed', this.deck);
     }
   }
 }

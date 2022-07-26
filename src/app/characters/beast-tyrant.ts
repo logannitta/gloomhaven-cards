@@ -1,6 +1,6 @@
 import { Card, CardId } from '../deck/basic-deck';
 import { Character, Perk } from './character';
-import { BasicPerkAction } from './perk-actions';
+import { BasicPerkAction, removeCard } from './perk-actions';
 
 export const beastTyrantCards = {
   plus1Immobilize: {
@@ -29,8 +29,18 @@ export const beastTyrantActions = {
   'Add one +1 immobilize card': (deck: Card[]) => {
     return [...deck, beastTyrantCards.plus1Immobilize];
   },
+  'Undo Add one +1 immobilize card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.beastTyrantPlus1Immobilize, newDeck);
+    return newDeck;
+  },
   'Add one +1 wound card': (deck: Card[]) => {
     return [...deck, beastTyrantCards.plus1Wound];
+  },
+  'Undo Add one +1 wound card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.beastTyrantPlus1Wound, newDeck);
+    return newDeck;
   },
   'Add two rolling earth cards': (deck: Card[]) => {
     return [
@@ -39,12 +49,24 @@ export const beastTyrantActions = {
       beastTyrantCards.rollingEarth,
     ];
   },
+  'Undo Add two rolling earth cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.beastTyrantRollingEarth, newDeck);
+    removeCard(CardId.beastTyrantRollingEarth, newDeck);
+    return newDeck;
+  },
   'Add two rolling heal 1 self cards': (deck: Card[]) => {
     return [
       ...deck,
       beastTyrantCards.rollingHeal1Self,
       beastTyrantCards.rollingHeal1Self,
     ];
+  },
+  'Undo Add two rolling heal 1 self cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.beastTyrantRollingHeal1Self, newDeck);
+    removeCard(CardId.beastTyrantRollingHeal1Self, newDeck);
+    return newDeck;
   },
 };
 
@@ -57,84 +79,101 @@ export class BeastTyrant implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) card with one (+2) card',
       addAction: BasicPerkAction['Replace one +0 with one +2 card'],
+      removeAction: BasicPerkAction['Undo Replace one +0 with one +2 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) card with one (+2) card',
       addAction: BasicPerkAction['Replace one +0 with one +2 card'],
+      removeAction: BasicPerkAction['Undo Replace one +0 with one +2 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Wound] card',
       addAction: beastTyrantActions['Add one +1 wound card'],
+      removeAction: beastTyrantActions['Undo Add one +1 wound card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Wound] card',
       addAction: beastTyrantActions['Add one +1 wound card'],
+      removeAction: beastTyrantActions['Undo Add one +1 wound card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Immobilize] card',
       addAction: beastTyrantActions['Add one +1 immobilize card'],
+      removeAction: beastTyrantActions['Undo Add one +1 immobilize card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Immobilize] card',
       addAction: beastTyrantActions['Add one +1 immobilize card'],
+      removeAction: beastTyrantActions['Undo Add one +1 immobilize card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Heal 1 Self] cards',
       addAction: beastTyrantActions['Add two rolling heal 1 self cards'],
+      removeAction:
+        beastTyrantActions['Undo Add two rolling heal 1 self cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Heal 1 Self] cards',
       addAction: beastTyrantActions['Add two rolling heal 1 self cards'],
+      removeAction:
+        beastTyrantActions['Undo Add two rolling heal 1 self cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Heal 1 Self] cards',
       addAction: beastTyrantActions['Add two rolling heal 1 self cards'],
+      removeAction:
+        beastTyrantActions['Undo Add two rolling heal 1 self cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Earth] cards',
       addAction: beastTyrantActions['Add two rolling earth cards'],
+      removeAction: beastTyrantActions['Undo Add two rolling earth cards'],
     },
   ];
 }
