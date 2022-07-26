@@ -4,7 +4,7 @@ import { Perk } from '../characters/character';
 @Component({
   selector: 'app-perk-list',
   templateUrl: './perk-list.component.html',
-  styleUrls: ['./perk-list.component.css'],
+  styleUrls: ['./perk-list.component.scss'],
 })
 export class PerkListComponent implements OnInit {
   @Input() perks: Perk[] | undefined = [];

@@ -7,7 +7,7 @@ import { basicCards, basicDeck, Card, CardId } from '../deck/basic-deck';
 @Component({
   selector: 'app-class',
   templateUrl: './class.component.html',
-  styleUrls: ['./class.component.css'],
+  styleUrls: ['./class.component.scss'],
 })
 export class ClassComponent implements OnInit {
   characterClass: Character | undefined;

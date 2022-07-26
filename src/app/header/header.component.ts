@@ -4,7 +4,7 @@ import { MenuCloseReason } from '@angular/material/menu/menu';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   characters = [
