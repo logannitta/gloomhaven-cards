@@ -1,4 +1,4 @@
-import { Card, CardId } from '../deck/basic-deck';
+import { basicCards, Card, CardId } from '../deck/basic-deck';
 import { Character, Perk } from './character';
 import { BasicPerkAction, removeCard } from './perk-actions';
 
@@ -39,17 +39,43 @@ export const berserkerActions = {
   'Add one plus 2 fire': (deck: Card[]) => {
     return [...deck, berserkerCards.plus2Fire];
   },
+  'Undo Add one plus 2 fire': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerPlus2Fire, newDeck);
+    return newDeck;
+  },
   'Add two rolling wound': (deck: Card[]) => {
     return [...deck, berserkerCards.rollingWound, berserkerCards.rollingWound];
+  },
+  'Undo Add two rolling wound': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerRollingWound, newDeck);
+    removeCard(CardId.berserkerRollingWound, newDeck);
+    return newDeck;
   },
   'Add one rolling stun': (deck: Card[]) => {
     return [...deck, berserkerCards.rollingStun];
   },
+  'Undo Add one rolling stun': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerRollingStun, newDeck);
+    return newDeck;
+  },
   'Add one rolling plus 2': (deck: Card[]) => {
     return [...deck, berserkerCards.rollingStun];
   },
+  'Undo Add one rolling plus 2': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerRollingPlus2, newDeck);
+    return newDeck;
+  },
   'Add one rolling plus 1 disarm': (deck: Card[]) => {
     return [...deck, berserkerCards.rollingPlus1Disarm];
+  },
+  'Undo Add one rolling plus 1 disarm': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerRollingPlus1Disarm, newDeck);
+    return newDeck;
   },
   'Add two rolling heal 1 self': (deck: Card[]) => {
     return [
@@ -58,9 +84,20 @@ export const berserkerActions = {
       berserkerCards.rollingHeal1Self,
     ];
   },
+  'Undo Add two rolling heal 1 self': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerRollingHeal1Self, newDeck);
+    removeCard(CardId.berserkerRollingHeal1Self, newDeck);
+    return newDeck;
+  },
   'Replace +0 with rolling +2': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus0, newDeck, [berserkerCards.rollingPlus2]);
+    return newDeck;
+  },
+  'Undo Replace +0 with rolling +2': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.berserkerRollingPlus2, newDeck, [basicCards.plus0]);
     return newDeck;
   },
 };
@@ -74,84 +111,98 @@ export class Berserker implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove four (+0) cards',
       addAction: BasicPerkAction['Remove four +0 cards'],
+      removeAction: BasicPerkAction['Undo Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) cards with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) cards with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) cards with one rolling (+2) card',
       addAction: berserkerActions['Replace +0 with rolling +2'],
+      removeAction: berserkerActions['Undo Replace +0 with rolling +2'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) cards with one rolling (+2) card',
       addAction: berserkerActions['Replace +0 with rolling +2'],
+      removeAction: berserkerActions['Undo Replace +0 with rolling +2'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Wound] cards',
       addAction: berserkerActions['Add two rolling wound'],
+      removeAction: berserkerActions['Undo Add two rolling wound'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Wound] cards',
       addAction: berserkerActions['Add two rolling wound'],
+      removeAction: berserkerActions['Undo Add two rolling wound'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one rolling [Stun] card',
       addAction: berserkerActions['Add one rolling stun'],
+      removeAction: berserkerActions['Undo Add one rolling stun'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one rolling [Stun] card',
       addAction: berserkerActions['Add one rolling stun'],
+      removeAction: berserkerActions['Undo Add one rolling stun'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one rolling (+1) [Disarm] card',
       addAction: berserkerActions['Add one rolling plus 1 disarm'],
+      removeAction: berserkerActions['Undo Add one rolling plus 1 disarm'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Heal 1 Self] cards',
       addAction: berserkerActions['Add two rolling heal 1 self'],
+      removeAction: berserkerActions['Undo Add two rolling heal 1 self'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Fire] card',
       addAction: berserkerActions['Add one plus 2 fire'],
+      removeAction: berserkerActions['Undo Add one plus 2 fire'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Fire] card',
       addAction: berserkerActions['Add one plus 2 fire'],
+      removeAction: berserkerActions['Undo Add one plus 2 fire'],
     },
   ];
 }
