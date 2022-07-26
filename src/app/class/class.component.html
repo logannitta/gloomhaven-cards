@@ -1,10 +1,14 @@
-{{ characterClass?.name }}
-{{ characterClass?.health }}
+<div id="character-name">
+  {{ characterClass?.name }}
+</div>
+<!-- {{ characterClass?.health }} -->
 <!-- {{ characterClass?.perks | json }} -->
-<app-perk-list
-  [perks]="characterClass?.perks"
-  (addOrRemovePerk)="addOrRemovePerk($event)"
-></app-perk-list>
+<div id="perk-list">
+  <app-perk-list
+    [perks]="characterClass?.perks"
+    (addOrRemovePerk)="addOrRemovePerk($event)"
+  ></app-perk-list>
+</div>
 <app-deck
   [deck]="deck"
   [pulledCards]="pulledCards"

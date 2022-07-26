@@ -1,0 +1,10 @@
+mat-checkbox {
+  font-family: "Pirata One", cursive;
+  font-size: large;
+  overflow-wrap: break-word;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}

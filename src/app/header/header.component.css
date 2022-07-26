@@ -4,6 +4,10 @@ mat-toolbar {
   font-size: xx-large;
 }
 
+button {
+  font-family: "Pirata One", cursive;
+}
+
 .icons {
   height: 15px;
   margin: auto;
