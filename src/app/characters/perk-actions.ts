@@ -82,7 +82,7 @@ export const BasicPerkAction = {
     return [...deck, basicCards.plus1, basicCards.plus1];
   },
 
-  ' Undo Add two +1 cards': (deck: Card[]) => {
+  'Undo Add two +1 cards': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus1, newDeck);
     removeCard(CardId.plus1, newDeck);

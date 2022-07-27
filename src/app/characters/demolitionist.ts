@@ -40,12 +40,27 @@ export const demolitionistActions = {
   'Add one +0 all adjacent suffer 1': (deck: Card[]) => {
     return [...deck, demolitionistCards.plus0AdjacentSuffer1];
   },
+  'Undo Add one +0 all adjacent suffer 1': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.demolitionistPlus0AdjacentSuffer1, newDeck);
+    return newDeck;
+  },
   'Add one (+2)': (deck: Card[]) => {
     return [...deck, demolitionistCards.plus2];
+  },
+  'Undo Add one (+2)': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.demolitionistPlus2, newDeck);
+    return newDeck;
   },
   'Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus0, newDeck, [demolitionistCards.plus2Muddle]);
+    return newDeck;
+  },
+  'Undo Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.demolitionistPlus2Muddle, newDeck, [basicCards.plus0]);
     return newDeck;
   },
   'Replace one (-1) card with one (+0) [Poison] card': (deck: Card[]) => {
@@ -53,9 +68,19 @@ export const demolitionistActions = {
     removeCard(CardId.minus1, newDeck, [demolitionistCards.plus0Poison]);
     return newDeck;
   },
+  'Undo Replace one (-1) card with one (+0) [Poison] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.demolitionistPlus0Poison, newDeck, [basicCards.minus1]);
+    return newDeck;
+  },
   'Replace one (+1) card with one (+2) [Fire] card': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus1, newDeck, [demolitionistCards.plus2Fire]);
+    return newDeck;
+  },
+  'Undo Replace one (+1) card with one (+2) [Fire] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.demolitionistPlus2Fire, newDeck, [basicCards.plus1]);
     return newDeck;
   },
   'Replace one (+1) card with one (+2) [Earth] card': (deck: Card[]) => {
@@ -63,11 +88,19 @@ export const demolitionistActions = {
     removeCard(CardId.plus1, newDeck, [demolitionistCards.plus2Earth]);
     return newDeck;
   },
+  'Undo Replace one (+1) card with one (+2) [Earth] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.demolitionistPlus2Earth, newDeck, [basicCards.plus1]);
+    return newDeck;
+  },
   'Remove one (-2) card and one (+1) card': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.minus2, newDeck);
     removeCard(CardId.plus1, newDeck);
     return newDeck;
+  },
+  'Undo Remove one (-2) card and one (+1) card': (deck: Card[]) => {
+    return [...deck, basicCards.minus2, basicCards.plus1];
   },
 };
 
@@ -80,24 +113,29 @@ export class Demolitionist implements Character {
       completed: false,
       text: 'Remove four (+0) cards',
       addAction: BasicPerkAction['Remove four +0 cards'],
+      removeAction: BasicPerkAction['Undo Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove one (-2) card and one (+1) card',
       addAction: demolitionistActions['Remove one (-2) card and one (+1) card'],
+      removeAction:
+        demolitionistActions['Undo Remove one (-2) card and one (+1) card'],
     },
     {
       name: 'Primary',
@@ -107,6 +145,10 @@ export class Demolitionist implements Character {
         demolitionistActions[
           'Replace one (+0) card with one (+2) [Muddle] card'
         ],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (+0) card with one (+2) [Muddle] card'
+        ],
     },
     {
       name: 'Primary',
@@ -115,6 +157,10 @@ export class Demolitionist implements Character {
       addAction:
         demolitionistActions[
           'Replace one (+0) card with one (+2) [Muddle] card'
+        ],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (+0) card with one (+2) [Muddle] card'
         ],
     },
     {
@@ -125,18 +171,24 @@ export class Demolitionist implements Character {
         demolitionistActions[
           'Replace one (-1) card with one (+0) [Poison] card'
         ],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (-1) card with one (+0) [Poison] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) card',
       addAction: demolitionistActions['Add one (+2)'],
+      removeAction: demolitionistActions['Undo Add one (+2)'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) card',
       addAction: demolitionistActions['Add one (+2)'],
+      removeAction: demolitionistActions['Undo Add one (+2)'],
     },
     {
       name: 'Primary',
@@ -145,6 +197,10 @@ export class Demolitionist implements Character {
       addAction:
         demolitionistActions[
           'Replace one (+1) card with one (+2) [Earth] card'
+        ],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (+1) card with one (+2) [Earth] card'
         ],
     },
     {
@@ -155,6 +211,10 @@ export class Demolitionist implements Character {
         demolitionistActions[
           'Replace one (+1) card with one (+2) [Earth] card'
         ],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (+1) card with one (+2) [Earth] card'
+        ],
     },
     {
       name: 'Primary',
@@ -162,6 +222,10 @@ export class Demolitionist implements Character {
       text: 'Replace one (+1) card with one (+2) [Fire] card',
       addAction:
         demolitionistActions['Replace one (+1) card with one (+2) [Fire] card'],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (+1) card with one (+2) [Fire] card'
+        ],
     },
     {
       name: 'Primary',
@@ -169,18 +233,26 @@ export class Demolitionist implements Character {
       text: 'Replace one (+1) card with one (+2) [Fire] card',
       addAction:
         demolitionistActions['Replace one (+1) card with one (+2) [Fire] card'],
+      removeAction:
+        demolitionistActions[
+          'Undo Replace one (+1) card with one (+2) [Fire] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+0) [All adjacent enemies suffer 1 damage]',
       addAction: demolitionistActions['Add one +0 all adjacent suffer 1'],
+      removeAction:
+        demolitionistActions['Undo Add one +0 all adjacent suffer 1'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+0) [All adjacent enemies suffer 1 damage]',
       addAction: demolitionistActions['Add one +0 all adjacent suffer 1'],
+      removeAction:
+        demolitionistActions['Undo Add one +0 all adjacent suffer 1'],
     },
   ];
 }
