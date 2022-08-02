@@ -46,7 +46,11 @@ export const mindthiefActions = {
   },
   'Undo Add one (+2) Ice card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefPlus2Ice, newDeck);
+    try {
+      removeCard(CardId.mindthiefPlus2Ice, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling (+1) cards': (deck: Card[]) => {
@@ -54,8 +58,12 @@ export const mindthiefActions = {
   },
   'Undo Add two rolling (+1) cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefRollingPlus1, newDeck);
-    removeCard(CardId.mindthiefRollingPlus1, newDeck);
+    try {
+      removeCard(CardId.mindthiefRollingPlus1, newDeck);
+      removeCard(CardId.mindthiefRollingPlus1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling [Stun] card': (deck: Card[]) => {
@@ -63,7 +71,11 @@ export const mindthiefActions = {
   },
   'Undo Add one rolling [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefRollingStun, newDeck);
+    try {
+      removeCard(CardId.mindthiefRollingStun, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling [Immobilize] cards': (deck: Card[]) => {
@@ -75,8 +87,12 @@ export const mindthiefActions = {
   },
   'Undo Add two rolling [Immobilize] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefRollingImmobilize, newDeck);
-    removeCard(CardId.mindthiefRollingImmobilize, newDeck);
+    try {
+      removeCard(CardId.mindthiefRollingImmobilize, newDeck);
+      removeCard(CardId.mindthiefRollingImmobilize, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling [Disarm] card and one rolling [Muddle] card': (
@@ -92,8 +108,12 @@ export const mindthiefActions = {
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefRollingDisarm, newDeck);
-    removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    try {
+      removeCard(CardId.mindthiefRollingDisarm, newDeck);
+      removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three rolling [Pull 1] cards': (deck: Card[]) => {
@@ -106,9 +126,13 @@ export const mindthiefActions = {
   },
   'Undo Add three rolling [Pull 1] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefRollingPull1, newDeck);
-    removeCard(CardId.mindthiefRollingPull1, newDeck);
-    removeCard(CardId.mindthiefRollingPull1, newDeck);
+    try {
+      removeCard(CardId.mindthiefRollingPull1, newDeck);
+      removeCard(CardId.mindthiefRollingPull1, newDeck);
+      removeCard(CardId.mindthiefRollingPull1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three rolling [Muddle] cards': (deck: Card[]) => {
@@ -121,21 +145,33 @@ export const mindthiefActions = {
   },
   'Undo Add three rolling [Muddle] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.mindthiefRollingMuddle, newDeck);
-    removeCard(CardId.mindthiefRollingMuddle, newDeck);
-    removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    try {
+      removeCard(CardId.mindthiefRollingMuddle, newDeck);
+      removeCard(CardId.mindthiefRollingMuddle, newDeck);
+      removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace two (+1) cards with two (+2) cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [basicCards.plus2]);
-    removeCard(CardId.plus1, newDeck, [basicCards.plus2]);
+    try {
+      removeCard(CardId.plus1, newDeck, [basicCards.plus2]);
+      removeCard(CardId.plus1, newDeck, [basicCards.plus2]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace two (+1) cards with two (+2) cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus2, newDeck, [basicCards.plus1]);
-    removeCard(CardId.plus2, newDeck, [basicCards.plus1]);
+    try {
+      removeCard(CardId.plus2, newDeck, [basicCards.plus1]);
+      removeCard(CardId.plus2, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };

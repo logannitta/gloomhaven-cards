@@ -51,7 +51,11 @@ export const elementalistActions = {
   },
   'Undo Add one (+0) [Add Target] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus0AddTarget, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus0AddTarget, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+0) [Stun] card': (deck: Card[]) => {
@@ -59,7 +63,11 @@ export const elementalistActions = {
   },
   'Undo Add one (+0) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus0Stun, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus0Stun, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+1) [Wound] card': (deck: Card[]) => {
@@ -67,7 +75,11 @@ export const elementalistActions = {
   },
   'Undo Add one (+1) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus1Wound, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus1Wound, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three (+0) [Fire] cards': (deck: Card[]) => {
@@ -80,9 +92,13 @@ export const elementalistActions = {
   },
   'Undo Add three (+0) [Fire] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus0Fire, newDeck);
-    removeCard(CardId.elementalistPlus0Fire, newDeck);
-    removeCard(CardId.elementalistPlus0Fire, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus0Fire, newDeck);
+      removeCard(CardId.elementalistPlus0Fire, newDeck);
+      removeCard(CardId.elementalistPlus0Fire, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three (+0) [Ice] cards': (deck: Card[]) => {
@@ -95,9 +111,13 @@ export const elementalistActions = {
   },
   'Undo Add three (+0) [Ice] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus0Ice, newDeck);
-    removeCard(CardId.elementalistPlus0Ice, newDeck);
-    removeCard(CardId.elementalistPlus0Ice, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus0Ice, newDeck);
+      removeCard(CardId.elementalistPlus0Ice, newDeck);
+      removeCard(CardId.elementalistPlus0Ice, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three (+0) [Air] cards': (deck: Card[]) => {
@@ -110,9 +130,13 @@ export const elementalistActions = {
   },
   'Undo Add three (+0) [Air] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus0Air, newDeck);
-    removeCard(CardId.elementalistPlus0Air, newDeck);
-    removeCard(CardId.elementalistPlus0Air, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus0Air, newDeck);
+      removeCard(CardId.elementalistPlus0Air, newDeck);
+      removeCard(CardId.elementalistPlus0Air, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three (+0) [Earth] cards': (deck: Card[]) => {
@@ -125,9 +149,13 @@ export const elementalistActions = {
   },
   'Undo Add three (+0) [Earth] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus0Earth, newDeck);
-    removeCard(CardId.elementalistPlus0Earth, newDeck);
-    removeCard(CardId.elementalistPlus0Earth, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus0Earth, newDeck);
+      removeCard(CardId.elementalistPlus0Earth, newDeck);
+      removeCard(CardId.elementalistPlus0Earth, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two (+1) [Push 1] cards': (deck: Card[]) => {
@@ -139,37 +167,57 @@ export const elementalistActions = {
   },
   'Undo Add two (+1) [Push 1] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.elementalistPlus1Push1, newDeck);
-    removeCard(CardId.elementalistPlus1Push1, newDeck);
+    try {
+      removeCard(CardId.elementalistPlus1Push1, newDeck);
+      removeCard(CardId.elementalistPlus1Push1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace two (+0) cards with one (+0) [Fire] card and one (+0) [Earth] card':
     (deck: Card[]) => {
       const newDeck = [...deck];
-      removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Fire]);
-      removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Earth]);
+      try {
+        removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Fire]);
+        removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Earth]);
+      } catch (error) {
+        return false;
+      }
       return newDeck;
     },
   'Undo Replace two (+0) cards with one (+0) [Fire] card and one (+0) [Earth] card':
     (deck: Card[]) => {
       const newDeck = [...deck];
-      removeCard(CardId.elementalistPlus0Fire, newDeck, [basicCards.plus0]);
-      removeCard(CardId.elementalistPlus0Earth, newDeck, [basicCards.plus0]);
+      try {
+        removeCard(CardId.elementalistPlus0Fire, newDeck, [basicCards.plus0]);
+        removeCard(CardId.elementalistPlus0Earth, newDeck, [basicCards.plus0]);
+      } catch (error) {
+        return false;
+      }
       return newDeck;
     },
   'Replace two (+0) cards with one (+0) [Ice] card and one (+0) [Air] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Ice]);
-    removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Air]);
+    try {
+      removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Ice]);
+      removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Air]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace two (+0) cards with one (+0) [Ice] card and one (+0) [Air] card':
     (deck: Card[]) => {
       const newDeck = [...deck];
-      removeCard(CardId.elementalistPlus0Ice, newDeck, [basicCards.plus0]);
-      removeCard(CardId.elementalistPlus0Air, newDeck, [basicCards.plus0]);
+      try {
+        removeCard(CardId.elementalistPlus0Ice, newDeck, [basicCards.plus0]);
+        removeCard(CardId.elementalistPlus0Air, newDeck, [basicCards.plus0]);
+      } catch (error) {
+        return false;
+      }
       return newDeck;
     },
 };

@@ -58,7 +58,11 @@ export const nightshroudActions = {
   },
   'Undo Add one rolling [Add Target] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.nightshroudRollingAddTarget, newDeck);
+    try {
+      removeCard(CardId.nightshroudRollingAddTarget, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+1) [Invisible] card': (deck: Card[]) => {
@@ -66,7 +70,11 @@ export const nightshroudActions = {
   },
   'Undo Add one (+1) [Invisible] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.nightshroudPlus1Invisible, newDeck);
+    try {
+      removeCard(CardId.nightshroudPlus1Invisible, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three rolling [Muddle] cards': (deck: Card[]) => {
@@ -79,9 +87,13 @@ export const nightshroudActions = {
   },
   'Undo Add three rolling [Muddle] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.nightshroudRollingMuddle, newDeck);
-    removeCard(CardId.nightshroudRollingMuddle, newDeck);
-    removeCard(CardId.nightshroudRollingMuddle, newDeck);
+    try {
+      removeCard(CardId.nightshroudRollingMuddle, newDeck);
+      removeCard(CardId.nightshroudRollingMuddle, newDeck);
+      removeCard(CardId.nightshroudRollingMuddle, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling [Heal 1 Self] cards': (deck: Card[]) => {
@@ -93,8 +105,12 @@ export const nightshroudActions = {
   },
   'Undo Add two rolling [Heal 1 Self] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.nightshroudRollingHeal1Self, newDeck);
-    removeCard(CardId.nightshroudRollingHeal1Self, newDeck);
+    try {
+      removeCard(CardId.nightshroudRollingHeal1Self, newDeck);
+      removeCard(CardId.nightshroudRollingHeal1Self, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling [Curse] cards': (deck: Card[]) => {
@@ -106,8 +122,12 @@ export const nightshroudActions = {
   },
   'Undo Add two rolling [Curse] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.nightshroudRollingCurse, newDeck);
-    removeCard(CardId.nightshroudRollingCurse, newDeck);
+    try {
+      removeCard(CardId.nightshroudRollingCurse, newDeck);
+      removeCard(CardId.nightshroudRollingCurse, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (-1) [Dark] card with one (+1) [Dark] card': (deck: Card[]) => {

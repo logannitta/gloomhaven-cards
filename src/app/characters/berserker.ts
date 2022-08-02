@@ -41,7 +41,11 @@ export const berserkerActions = {
   },
   'Undo Add one plus 2 fire': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerPlus2Fire, newDeck);
+    try {
+      removeCard(CardId.berserkerPlus2Fire, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling wound': (deck: Card[]) => {
@@ -49,8 +53,12 @@ export const berserkerActions = {
   },
   'Undo Add two rolling wound': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerRollingWound, newDeck);
-    removeCard(CardId.berserkerRollingWound, newDeck);
+    try {
+      removeCard(CardId.berserkerRollingWound, newDeck);
+      removeCard(CardId.berserkerRollingWound, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling stun': (deck: Card[]) => {
@@ -58,7 +66,11 @@ export const berserkerActions = {
   },
   'Undo Add one rolling stun': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerRollingStun, newDeck);
+    try {
+      removeCard(CardId.berserkerRollingStun, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling plus 2': (deck: Card[]) => {
@@ -66,7 +78,11 @@ export const berserkerActions = {
   },
   'Undo Add one rolling plus 2': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerRollingPlus2, newDeck);
+    try {
+      removeCard(CardId.berserkerRollingPlus2, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling plus 1 disarm': (deck: Card[]) => {
@@ -74,7 +90,11 @@ export const berserkerActions = {
   },
   'Undo Add one rolling plus 1 disarm': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerRollingPlus1Disarm, newDeck);
+    try {
+      removeCard(CardId.berserkerRollingPlus1Disarm, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling heal 1 self': (deck: Card[]) => {
@@ -86,18 +106,30 @@ export const berserkerActions = {
   },
   'Undo Add two rolling heal 1 self': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerRollingHeal1Self, newDeck);
-    removeCard(CardId.berserkerRollingHeal1Self, newDeck);
+    try {
+      removeCard(CardId.berserkerRollingHeal1Self, newDeck);
+      removeCard(CardId.berserkerRollingHeal1Self, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace +0 with rolling +2': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [berserkerCards.rollingPlus2]);
+    try {
+      removeCard(CardId.plus0, newDeck, [berserkerCards.rollingPlus2]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace +0 with rolling +2': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.berserkerRollingPlus2, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.berserkerRollingPlus2, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };

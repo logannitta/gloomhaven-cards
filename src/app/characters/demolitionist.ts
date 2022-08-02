@@ -42,7 +42,11 @@ export const demolitionistActions = {
   },
   'Undo Add one +0 all adjacent suffer 1': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.demolitionistPlus0AdjacentSuffer1, newDeck);
+    try {
+      removeCard(CardId.demolitionistPlus0AdjacentSuffer1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+2)': (deck: Card[]) => {
@@ -50,53 +54,93 @@ export const demolitionistActions = {
   },
   'Undo Add one (+2)': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.demolitionistPlus2, newDeck);
+    try {
+      removeCard(CardId.demolitionistPlus2, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [demolitionistCards.plus2Muddle]);
+    try {
+      removeCard(CardId.plus0, newDeck, [demolitionistCards.plus2Muddle]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.demolitionistPlus2Muddle, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.demolitionistPlus2Muddle, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (-1) card with one (+0) [Poison] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus1, newDeck, [demolitionistCards.plus0Poison]);
+    try {
+      removeCard(CardId.minus1, newDeck, [demolitionistCards.plus0Poison]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (-1) card with one (+0) [Poison] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.demolitionistPlus0Poison, newDeck, [basicCards.minus1]);
+    try {
+      removeCard(CardId.demolitionistPlus0Poison, newDeck, [basicCards.minus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+1) card with one (+2) [Fire] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [demolitionistCards.plus2Fire]);
+    try {
+      removeCard(CardId.plus1, newDeck, [demolitionistCards.plus2Fire]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+1) card with one (+2) [Fire] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.demolitionistPlus2Fire, newDeck, [basicCards.plus1]);
+    try {
+      removeCard(CardId.demolitionistPlus2Fire, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+1) card with one (+2) [Earth] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [demolitionistCards.plus2Earth]);
+    try {
+      removeCard(CardId.plus1, newDeck, [demolitionistCards.plus2Earth]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+1) card with one (+2) [Earth] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.demolitionistPlus2Earth, newDeck, [basicCards.plus1]);
+    try {
+      removeCard(CardId.demolitionistPlus2Earth, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Remove one (-2) card and one (+1) card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus2, newDeck);
-    removeCard(CardId.plus1, newDeck);
+    try {
+      removeCard(CardId.minus2, newDeck);
+      removeCard(CardId.plus1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Remove one (-2) card and one (+1) card': (deck: Card[]) => {

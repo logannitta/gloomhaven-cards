@@ -46,7 +46,11 @@ export const doomstalkerActions = {
   },
   'Undo Add one (+0) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerPlus0Stun, newDeck);
+    try {
+      removeCard(CardId.doomstalkerPlus0Stun, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling [Add Target] card': (deck: Card[]) => {
@@ -54,7 +58,11 @@ export const doomstalkerActions = {
   },
   'Undo Add one rolling [Add Target] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerRollingAddTarget, newDeck);
+    try {
+      removeCard(CardId.doomstalkerRollingAddTarget, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+1) [Immobilize] card': (deck: Card[]) => {
@@ -62,7 +70,11 @@ export const doomstalkerActions = {
   },
   'Undo Add one (+1) [Immobilize] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerPlus1Immobilize, newDeck);
+    try {
+      removeCard(CardId.doomstalkerPlus1Immobilize, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+1) [Poison] card': (deck: Card[]) => {
@@ -70,7 +82,11 @@ export const doomstalkerActions = {
   },
   'Undo Add one (+1) [Poison] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerPlus1Poison, newDeck);
+    try {
+      removeCard(CardId.doomstalkerPlus1Poison, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+1) [Wound] card': (deck: Card[]) => {
@@ -78,7 +94,11 @@ export const doomstalkerActions = {
   },
   'Undo Add one (+1) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerPlus1Wound, newDeck);
+    try {
+      removeCard(CardId.doomstalkerPlus1Wound, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+2) [Muddle] card': (deck: Card[]) => {
@@ -86,7 +106,11 @@ export const doomstalkerActions = {
   },
   'Undo Add one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerPlus2Muddle, newDeck);
+    try {
+      removeCard(CardId.doomstalkerPlus2Muddle, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling (+1) cards': (deck: Card[]) => {
@@ -98,20 +122,32 @@ export const doomstalkerActions = {
   },
   'Undo Add two rolling (+1) cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.doomstalkerRollingPlus1, newDeck);
-    removeCard(CardId.doomstalkerRollingPlus1, newDeck);
+    try {
+      removeCard(CardId.doomstalkerRollingPlus1, newDeck);
+      removeCard(CardId.doomstalkerRollingPlus1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace two (+0) cards with two (+1) cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [basicCards.plus1]);
-    removeCard(CardId.plus0, newDeck, [basicCards.plus1]);
+    try {
+      removeCard(CardId.plus0, newDeck, [basicCards.plus1]);
+      removeCard(CardId.plus0, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace two (+0) cards with two (+1) cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [basicCards.plus0]);
-    removeCard(CardId.plus1, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.plus1, newDeck, [basicCards.plus0]);
+      removeCard(CardId.plus1, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };

@@ -37,8 +37,12 @@ export const cragheartActions = {
   },
   'Undo Add two Rolling Push 2': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.cragheartRollingPush2, newDeck);
-    removeCard(CardId.cragheartRollingPush2, newDeck);
+    try {
+      removeCard(CardId.cragheartRollingPush2, newDeck);
+      removeCard(CardId.cragheartRollingPush2, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two Rolling earth': (deck: Card[]) => {
@@ -46,8 +50,12 @@ export const cragheartActions = {
   },
   'Undo Add two Rolling earth': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.cragheartRollingEarth, newDeck);
-    removeCard(CardId.cragheartRollingEarth, newDeck);
+    try {
+      removeCard(CardId.cragheartRollingEarth, newDeck);
+      removeCard(CardId.cragheartRollingEarth, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two Rolling air': (deck: Card[]) => {
@@ -55,8 +63,12 @@ export const cragheartActions = {
   },
   'Undo Add two Rolling air': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.cragheartRollingAir, newDeck);
-    removeCard(CardId.cragheartRollingAir, newDeck);
+    try {
+      removeCard(CardId.cragheartRollingAir, newDeck);
+      removeCard(CardId.cragheartRollingAir, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one +1 immobilize': (deck: Card[]) => {
@@ -64,7 +76,11 @@ export const cragheartActions = {
   },
   'Undo Add one +1 immobilize': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.cragheartPlus1Immobilize, newDeck);
+    try {
+      removeCard(CardId.cragheartPlus1Immobilize, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one +2 muddle': (deck: Card[]) => {
@@ -72,7 +88,11 @@ export const cragheartActions = {
   },
   'Undo Add one +2 muddle': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.cragheartPlus2Muddle, newDeck);
+    try {
+      removeCard(CardId.cragheartPlus2Muddle, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one -2 and two +2': (deck: Card[]) => {
@@ -80,9 +100,13 @@ export const cragheartActions = {
   },
   'Undo Add one -2 and two +2': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus2, newDeck);
-    removeCard(CardId.plus2, newDeck);
-    removeCard(CardId.plus2, newDeck);
+    try {
+      removeCard(CardId.minus2, newDeck);
+      removeCard(CardId.plus2, newDeck);
+      removeCard(CardId.plus2, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };

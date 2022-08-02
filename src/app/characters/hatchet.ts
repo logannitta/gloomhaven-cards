@@ -53,74 +53,130 @@ export const hatchetCards = {
 export const hatchetActions = {
   'Replace one (+0) card with one (+0) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [hatchetCards.plus0Stun]);
+    try {
+      removeCard(CardId.plus0, newDeck, [hatchetCards.plus0Stun]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+0) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus0Stun, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.hatchetPlus0Stun, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [hatchetCards.plus2Muddle]);
+    try {
+      removeCard(CardId.plus0, newDeck, [hatchetCards.plus2Muddle]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus2Muddle, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.hatchetPlus2Muddle, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Poison] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Poison]);
+    try {
+      removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Poison]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+1) [Poison] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus1Poison, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.hatchetPlus1Poison, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Wound]);
+    try {
+      removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Wound]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+1) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus1Wound, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.hatchetPlus1Wound, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Immobilize] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Immobilize]);
+    try {
+      removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Immobilize]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+1) [Immobilize] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus1Immobilize, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.hatchetPlus1Immobilize, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+1) card with one (+1) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [hatchetCards.plus1Stun]);
+    try {
+      removeCard(CardId.plus1, newDeck, [hatchetCards.plus1Stun]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+1) card with one (+1) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus1Stun, newDeck, [basicCards.plus1]);
+    try {
+      removeCard(CardId.hatchetPlus1Stun, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+1) with one (+3) card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [hatchetCards.plus3]);
+    try {
+      removeCard(CardId.plus1, newDeck, [hatchetCards.plus3]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+1) with one (+3) card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus3, newDeck, [basicCards.plus1]);
+    try {
+      removeCard(CardId.hatchetPlus3, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one (+2) Air card': (deck: Card[]) => {
@@ -128,17 +184,29 @@ export const hatchetActions = {
   },
   'Undo Add one (+2) Air card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.hatchetPlus2Air, newDeck);
+    try {
+      removeCard(CardId.hatchetPlus2Air, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   // 'Replace one (+0) card with one (+1) [Push 2] card': (deck: Card[]) => {
   //   const newDeck = [...deck];
-  //   removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Push2]);
+  //   try {
+  //     removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Push2]);
+  //   } catch (error) {
+  //     return false;
+  //   }
   //   return newDeck;
   // },
   // 'Undo Replace one (+0) card with one (+1) [Push 2] card': (deck: Card[]) => {
   //   const newDeck = [...deck];
-  //   removeCard(CardId.hatchetPlus1Push2, newDeck, [basicCards.plus0]);
+  //   try {
+  //     removeCard(CardId.hatchetPlus1Push2, newDeck, [basicCards.plus0]);
+  //   } catch (error) {
+  //     return false;
+  //   }
   //   return newDeck;
   // },
 };

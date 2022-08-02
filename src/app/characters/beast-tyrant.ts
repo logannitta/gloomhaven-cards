@@ -31,7 +31,11 @@ export const beastTyrantActions = {
   },
   'Undo Add one +1 immobilize card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.beastTyrantPlus1Immobilize, newDeck);
+    try {
+      removeCard(CardId.beastTyrantPlus1Immobilize, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one +1 wound card': (deck: Card[]) => {
@@ -39,7 +43,11 @@ export const beastTyrantActions = {
   },
   'Undo Add one +1 wound card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.beastTyrantPlus1Wound, newDeck);
+    try {
+      removeCard(CardId.beastTyrantPlus1Wound, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling earth cards': (deck: Card[]) => {
@@ -51,8 +59,12 @@ export const beastTyrantActions = {
   },
   'Undo Add two rolling earth cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.beastTyrantRollingEarth, newDeck);
-    removeCard(CardId.beastTyrantRollingEarth, newDeck);
+    try {
+      removeCard(CardId.beastTyrantRollingEarth, newDeck);
+      removeCard(CardId.beastTyrantRollingEarth, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling heal 1 self cards': (deck: Card[]) => {
@@ -64,8 +76,12 @@ export const beastTyrantActions = {
   },
   'Undo Add two rolling heal 1 self cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.beastTyrantRollingHeal1Self, newDeck);
-    removeCard(CardId.beastTyrantRollingHeal1Self, newDeck);
+    try {
+      removeCard(CardId.beastTyrantRollingHeal1Self, newDeck);
+      removeCard(CardId.beastTyrantRollingHeal1Self, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };

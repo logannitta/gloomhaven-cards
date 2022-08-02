@@ -52,7 +52,11 @@ export const bruteActions = {
   },
   'Undo Add one +3 card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.brutePlus3, newDeck);
+    try {
+      removeCard(CardId.brutePlus3, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three rolling Push 1': (deck: Card[]) => {
@@ -65,9 +69,13 @@ export const bruteActions = {
   },
   'Undo Add three rolling Push 1': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.bruteRollingPush1, newDeck);
-    removeCard(CardId.bruteRollingPush1, newDeck);
-    removeCard(CardId.bruteRollingPush1, newDeck);
+    try {
+      removeCard(CardId.bruteRollingPush1, newDeck);
+      removeCard(CardId.bruteRollingPush1, newDeck);
+      removeCard(CardId.bruteRollingPush1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling Pierce 3': (deck: Card[]) => {
@@ -75,8 +83,12 @@ export const bruteActions = {
   },
   'Undo Add two rolling Pierce 3': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.bruteRollingPierce3, newDeck);
-    removeCard(CardId.bruteRollingPierce3, newDeck);
+    try {
+      removeCard(CardId.bruteRollingPierce3, newDeck);
+      removeCard(CardId.bruteRollingPierce3, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add rolling Stun': (deck: Card[]) => {
@@ -84,7 +96,11 @@ export const bruteActions = {
   },
   'Undo Add rolling Stun': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.bruteRollingStun, newDeck);
+    try {
+      removeCard(CardId.bruteRollingStun, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add rolling Disarm and rolling Muddle': (deck: Card[]) => {
@@ -92,8 +108,12 @@ export const bruteActions = {
   },
   'Undo Add rolling Disarm and rolling Muddle': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.bruteRollingDisarm, newDeck);
-    removeCard(CardId.bruteRollingMuddle, newDeck);
+    try {
+      removeCard(CardId.bruteRollingDisarm, newDeck);
+      removeCard(CardId.bruteRollingMuddle, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one rolling Add Target': (deck: Card[]) => {
@@ -101,7 +121,11 @@ export const bruteActions = {
   },
   'Undo Add one rolling Add Target': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.bruteRollingAddTarget, newDeck);
+    try {
+      removeCard(CardId.bruteRollingAddTarget, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add one Plus 1 Shield 1 Self': (deck: Card[]) => {
@@ -109,7 +133,11 @@ export const bruteActions = {
   },
   'Undo Add one Plus 1 Shield 1 Self': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.brutePlus1Shield1Self, newDeck);
+    try {
+      removeCard(CardId.brutePlus1Shield1Self, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };

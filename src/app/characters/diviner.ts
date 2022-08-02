@@ -58,105 +58,175 @@ export const divinerCards = {
 export const divinerActions = {
   'Replace one (-1) card with one (+1) [Heal 2 Ally] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus1, newDeck, [divinerCards.plus1Heal2Ally]);
+    try {
+      removeCard(CardId.minus1, newDeck, [divinerCards.plus1Heal2Ally]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (-1) card with one (+1) [Heal 2 Ally] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus1Heal2Ally, newDeck, [basicCards.minus1]);
+    try {
+      removeCard(CardId.divinerPlus1Heal2Ally, newDeck, [basicCards.minus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+2) [Dark] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [divinerCards.plus2Dark]);
+    try {
+      removeCard(CardId.plus0, newDeck, [divinerCards.plus2Dark]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+2) [Dark] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus2Dark, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.divinerPlus2Dark, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+2) [Light] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [divinerCards.plus2Light]);
+    try {
+      removeCard(CardId.plus0, newDeck, [divinerCards.plus2Light]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+2) [Light] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus2Light, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.divinerPlus2Light, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+2) [Curse] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [divinerCards.plus2Curse]);
+    try {
+      removeCard(CardId.plus0, newDeck, [divinerCards.plus2Curse]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+2) [Curse] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus2Curse, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.divinerPlus2Curse, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+3) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [divinerCards.plus3Muddle]);
+    try {
+      removeCard(CardId.plus0, newDeck, [divinerCards.plus3Muddle]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+3) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus3Muddle, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.divinerPlus3Muddle, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+2) [Regenerate Self] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [divinerCards.plus2RegenerateSelf]);
+    try {
+      removeCard(CardId.plus0, newDeck, [divinerCards.plus2RegenerateSelf]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+2) [Regenerate Self] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus2RegenerateSelf, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.divinerPlus2RegenerateSelf, newDeck, [
+        basicCards.plus0,
+      ]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Shield 1 Ally] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [divinerCards.plus1Shield1Ally]);
+    try {
+      removeCard(CardId.plus0, newDeck, [divinerCards.plus1Shield1Ally]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace one (+0) card with one (+1) [Shield 1 Ally] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus1Shield1Ally, newDeck, [basicCards.plus0]);
+    try {
+      removeCard(CardId.divinerPlus1Shield1Ally, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace two (+1) cards with one (+3) [Shield 1 Self] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck);
-    removeCard(CardId.plus1, newDeck, [divinerCards.plus3Shield1Self]);
+    try {
+      removeCard(CardId.plus1, newDeck);
+      removeCard(CardId.plus1, newDeck, [divinerCards.plus3Shield1Self]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Replace two (+1) cards with one (+3) [Shield 1 Self] card': (
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerPlus3Shield1Self, newDeck, [
-      basicCards.plus1,
-      basicCards.plus1,
-    ]);
+    try {
+      removeCard(CardId.divinerPlus3Shield1Self, newDeck, [
+        basicCards.plus1,
+        basicCards.plus1,
+      ]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Remove one -2 card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus2, newDeck);
+    try {
+      removeCard(CardId.minus2, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Undo Remove one -2 card': (deck: Card[]) => {
@@ -171,8 +241,12 @@ export const divinerActions = {
   },
   'Undo Add two rolling [Heal 1 Self] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerRollingHeal1Self, newDeck);
-    removeCard(CardId.divinerRollingHeal1Self, newDeck);
+    try {
+      removeCard(CardId.divinerRollingHeal1Self, newDeck);
+      removeCard(CardId.divinerRollingHeal1Self, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add two rolling [Curse] cards': (deck: Card[]) => {
@@ -180,8 +254,12 @@ export const divinerActions = {
   },
   'Undo Add two rolling [Curse] cards': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.divinerRollingCurse, newDeck);
-    removeCard(CardId.divinerRollingCurse, newDeck);
+    try {
+      removeCard(CardId.divinerRollingCurse, newDeck);
+      removeCard(CardId.divinerRollingCurse, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Ignore negative scenario effects and add two (+1) cards': (deck: Card[]) => {
@@ -191,8 +269,12 @@ export const divinerActions = {
     deck: Card[]
   ) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck);
-    removeCard(CardId.plus1, newDeck);
+    try {
+      removeCard(CardId.plus1, newDeck);
+      removeCard(CardId.plus1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
 };
