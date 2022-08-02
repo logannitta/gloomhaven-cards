@@ -5,7 +5,7 @@
 <!-- {{ characterClass?.perks | json }} -->
 <div id="perk-list">
   <app-perk-list
-    [perks]="characterClass?.perks"
+    [perks]="characterClass.perks"
     (addOrRemovePerk)="addOrRemovePerk($event)"
   ></app-perk-list>
 </div>

@@ -44,11 +44,30 @@ export const nightshroudActions = {
   'Add one (-1) [Dark] card': (deck: Card[]) => {
     return [...deck, nightshroudCards.minus1Dark];
   },
+  'Undo Add one (-1) [Dark] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.nightshroudMinus1Dark, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add one rolling [Add Target] card': (deck: Card[]) => {
     return [...deck, nightshroudCards.rollingAddTarget];
   },
+  'Undo Add one rolling [Add Target] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.nightshroudRollingAddTarget, newDeck);
+    return newDeck;
+  },
   'Add one (+1) [Invisible] card': (deck: Card[]) => {
     return [...deck, nightshroudCards.plus1Invisible];
+  },
+  'Undo Add one (+1) [Invisible] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.nightshroudPlus1Invisible, newDeck);
+    return newDeck;
   },
   'Add three rolling [Muddle] cards': (deck: Card[]) => {
     return [
@@ -58,12 +77,25 @@ export const nightshroudActions = {
       nightshroudCards.rollingMuddle,
     ];
   },
+  'Undo Add three rolling [Muddle] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.nightshroudRollingMuddle, newDeck);
+    removeCard(CardId.nightshroudRollingMuddle, newDeck);
+    removeCard(CardId.nightshroudRollingMuddle, newDeck);
+    return newDeck;
+  },
   'Add two rolling [Heal 1 Self] cards': (deck: Card[]) => {
     return [
       ...deck,
       nightshroudCards.rollingHeal1Self,
       nightshroudCards.rollingHeal1Self,
     ];
+  },
+  'Undo Add two rolling [Heal 1 Self] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.nightshroudRollingHeal1Self, newDeck);
+    removeCard(CardId.nightshroudRollingHeal1Self, newDeck);
+    return newDeck;
   },
   'Add two rolling [Curse] cards': (deck: Card[]) => {
     return [
@@ -72,11 +104,30 @@ export const nightshroudActions = {
       nightshroudCards.rollingCurse,
     ];
   },
+  'Undo Add two rolling [Curse] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.nightshroudRollingCurse, newDeck);
+    removeCard(CardId.nightshroudRollingCurse, newDeck);
+    return newDeck;
+  },
   'Replace one (-1) [Dark] card with one (+1) [Dark] card': (deck: Card[]) => {
     const newDeck = [...deck];
     try {
       removeCard(CardId.nightshroudMinus1Dark, newDeck, [
         nightshroudCards.plus1Dark,
+      ]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (-1) [Dark] card with one (+1) [Dark] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.nightshroudPlus1Dark, newDeck, [
+        nightshroudCards.minus1Dark,
       ]);
     } catch (error) {
       return false;
@@ -94,30 +145,35 @@ export class Nightshroud implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove four (+0) cards',
       addAction: BasicPerkAction['Remove four +0 cards'],
+      removeAction: BasicPerkAction['Undo Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (-1) [Dark] card',
       addAction: nightshroudActions['Add one (-1) [Dark] card'],
+      removeAction: nightshroudActions['Undo Add one (-1) [Dark] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (-1) [Dark] card',
       addAction: nightshroudActions['Add one (-1) [Dark] card'],
+      removeAction: nightshroudActions['Undo Add one (-1) [Dark] card'],
     },
     {
       name: 'Primary',
@@ -126,6 +182,10 @@ export class Nightshroud implements Character {
       addAction:
         nightshroudActions[
           'Replace one (-1) [Dark] card with one (+1) [Dark] card'
+        ],
+      removeAction:
+        nightshroudActions[
+          'Undo Replace one (-1) [Dark] card with one (+1) [Dark] card'
         ],
     },
     {
@@ -136,48 +196,61 @@ export class Nightshroud implements Character {
         nightshroudActions[
           'Replace one (-1) [Dark] card with one (+1) [Dark] card'
         ],
+      removeAction:
+        nightshroudActions[
+          'Undo Replace one (-1) [Dark] card with one (+1) [Dark] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Invisible] card',
       addAction: nightshroudActions['Add one (+1) [Invisible] card'],
+      removeAction: nightshroudActions['Undo Add one (+1) [Invisible] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Invisible] card',
       addAction: nightshroudActions['Add one (+1) [Invisible] card'],
+      removeAction: nightshroudActions['Undo Add one (+1) [Invisible] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three rolling [Muddle] cards',
       addAction: nightshroudActions['Add three rolling [Muddle] cards'],
+      removeAction: nightshroudActions['Undo Add three rolling [Muddle] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three rolling [Muddle] cards',
       addAction: nightshroudActions['Add three rolling [Muddle] cards'],
+      removeAction: nightshroudActions['Undo Add three rolling [Muddle] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Heal 1 Self] cards',
       addAction: nightshroudActions['Add two rolling [Heal 1 Self] cards'],
+      removeAction:
+        nightshroudActions['Undo Add two rolling [Heal 1 Self] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Curse] cards',
       addAction: nightshroudActions['Add two rolling [Curse] cards'],
+      removeAction: nightshroudActions['Undo Add two rolling [Curse] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one rolling [Add Target] card',
       addAction: nightshroudActions['Add one rolling [Add Target] card'],
+      removeAction:
+        nightshroudActions['Undo Add one rolling [Add Target] card'],
     },
     {
       name: 'Primary',
@@ -186,6 +259,10 @@ export class Nightshroud implements Character {
       addAction:
         BasicPerkAction[
           'Ignore negative scenario effects and add one (+1) card'
+        ],
+      removeAction:
+        BasicPerkAction[
+          'Undo Ignore negative scenario effects and add one (+1) card'
         ],
     },
   ];

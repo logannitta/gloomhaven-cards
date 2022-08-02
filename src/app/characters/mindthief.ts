@@ -44,11 +44,27 @@ export const mindthiefActions = {
   'Add one (+2) Ice card': (deck: Card[]) => {
     return [...deck, mindthiefCards.plus2Ice];
   },
+  'Undo Add one (+2) Ice card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefPlus2Ice, newDeck);
+    return newDeck;
+  },
   'Add two rolling (+1) cards': (deck: Card[]) => {
     return [...deck, mindthiefCards.rollingPlus1, mindthiefCards.rollingPlus1];
   },
+  'Undo Add two rolling (+1) cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefRollingPlus1, newDeck);
+    removeCard(CardId.mindthiefRollingPlus1, newDeck);
+    return newDeck;
+  },
   'Add one rolling [Stun] card': (deck: Card[]) => {
     return [...deck, mindthiefCards.rollingStun];
+  },
+  'Undo Add one rolling [Stun] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefRollingStun, newDeck);
+    return newDeck;
   },
   'Add two rolling [Immobilize] cards': (deck: Card[]) => {
     return [
@@ -56,6 +72,12 @@ export const mindthiefActions = {
       mindthiefCards.rollingImmobilize,
       mindthiefCards.rollingImmobilize,
     ];
+  },
+  'Undo Add two rolling [Immobilize] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefRollingImmobilize, newDeck);
+    removeCard(CardId.mindthiefRollingImmobilize, newDeck);
+    return newDeck;
   },
   'Add one rolling [Disarm] card and one rolling [Muddle] card': (
     deck: Card[]
@@ -66,6 +88,14 @@ export const mindthiefActions = {
       mindthiefCards.rollingMuddle,
     ];
   },
+  'Undo Add one rolling [Disarm] card and one rolling [Muddle] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefRollingDisarm, newDeck);
+    removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    return newDeck;
+  },
   'Add three rolling [Pull 1] cards': (deck: Card[]) => {
     return [
       ...deck,
@@ -74,6 +104,13 @@ export const mindthiefActions = {
       mindthiefCards.rollingPull1,
     ];
   },
+  'Undo Add three rolling [Pull 1] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefRollingPull1, newDeck);
+    removeCard(CardId.mindthiefRollingPull1, newDeck);
+    removeCard(CardId.mindthiefRollingPull1, newDeck);
+    return newDeck;
+  },
   'Add three rolling [Muddle] cards': (deck: Card[]) => {
     return [
       ...deck,
@@ -81,6 +118,13 @@ export const mindthiefActions = {
       mindthiefCards.rollingMuddle,
       mindthiefCards.rollingMuddle,
     ];
+  },
+  'Undo Add three rolling [Muddle] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    removeCard(CardId.mindthiefRollingMuddle, newDeck);
+    return newDeck;
   },
   'Replace two (+1) cards with two (+2) cards': (deck: Card[]) => {
     const newDeck = [...deck];
@@ -141,48 +185,56 @@ export class Mindthief implements Character {
       completed: false,
       text: 'Add one (+2) [Ice] card',
       addAction: mindthiefActions['Add one (+2) Ice card'],
+      removeAction: mindthiefActions['Undo Add one (+2) Ice card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Ice] card',
       addAction: mindthiefActions['Add one (+2) Ice card'],
+      removeAction: mindthiefActions['Undo Add one (+2) Ice card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling (+1) cards',
       addAction: mindthiefActions['Add two rolling (+1) cards'],
+      removeAction: mindthiefActions['Undo Add two rolling (+1) cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling (+1) cards',
       addAction: mindthiefActions['Add two rolling (+1) cards'],
+      removeAction: mindthiefActions['Undo Add two rolling (+1) cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three rolling [Pull 1] cards',
       addAction: mindthiefActions['Add three rolling [Pull 1] cards'],
+      removeAction: mindthiefActions['Undo Add three rolling [Pull 1] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three rolling [Muddle] cards',
       addAction: mindthiefActions['Add three rolling [Muddle] cards'],
+      removeAction: mindthiefActions['Undo Add three rolling [Muddle] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Immobilize] cards',
       addAction: mindthiefActions['Add two rolling [Immobilize] cards'],
+      removeAction: mindthiefActions['Undo Add two rolling [Immobilize] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one rolling [Stun] card',
       addAction: mindthiefActions['Add one rolling [Stun] card'],
+      removeAction: mindthiefActions['Undo Add one rolling [Stun] card'],
     },
     {
       name: 'Primary',
@@ -191,6 +243,10 @@ export class Mindthief implements Character {
       addAction:
         mindthiefActions[
           'Add one rolling [Disarm] card and one rolling [Muddle] card'
+        ],
+      removeAction:
+        mindthiefActions[
+          'Undo Add one rolling [Disarm] card and one rolling [Muddle] card'
         ],
     },
   ];

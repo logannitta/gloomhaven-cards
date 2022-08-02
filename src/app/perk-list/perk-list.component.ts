@@ -7,7 +7,7 @@ import { Perk } from '../characters/character';
   styleUrls: ['./perk-list.component.scss'],
 })
 export class PerkListComponent implements OnInit {
-  @Input() perks: Perk[] | undefined = [];
+  @Input() perks: Perk[] = [];
 
   @Output() addOrRemovePerk: EventEmitter<Perk> = new EventEmitter();
 

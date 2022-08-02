@@ -1,4 +1,4 @@
-import { CardId, Card } from '../deck/basic-deck';
+import { CardId, Card, basicCards } from '../deck/basic-deck';
 import { Character, Perk } from './character';
 import { BasicPerkAction, removeCard } from './perk-actions';
 
@@ -56,9 +56,19 @@ export const hatchetActions = {
     removeCard(CardId.plus0, newDeck, [hatchetCards.plus0Stun]);
     return newDeck;
   },
+  'Undo Replace one (+0) card with one (+0) [Stun] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus0Stun, newDeck, [basicCards.plus0]);
+    return newDeck;
+  },
   'Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus0, newDeck, [hatchetCards.plus2Muddle]);
+    return newDeck;
+  },
+  'Undo Replace one (+0) card with one (+2) [Muddle] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus2Muddle, newDeck, [basicCards.plus0]);
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Poison] card': (deck: Card[]) => {
@@ -66,9 +76,19 @@ export const hatchetActions = {
     removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Poison]);
     return newDeck;
   },
+  'Undo Replace one (+0) card with one (+1) [Poison] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus1Poison, newDeck, [basicCards.plus0]);
+    return newDeck;
+  },
   'Replace one (+0) card with one (+1) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Wound]);
+    return newDeck;
+  },
+  'Undo Replace one (+0) card with one (+1) [Wound] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus1Wound, newDeck, [basicCards.plus0]);
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Immobilize] card': (deck: Card[]) => {
@@ -76,9 +96,21 @@ export const hatchetActions = {
     removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Immobilize]);
     return newDeck;
   },
+  'Undo Replace one (+0) card with one (+1) [Immobilize] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus1Immobilize, newDeck, [basicCards.plus0]);
+    return newDeck;
+  },
   'Replace one (+1) card with one (+1) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
     removeCard(CardId.plus1, newDeck, [hatchetCards.plus1Stun]);
+    return newDeck;
+  },
+  'Undo Replace one (+1) card with one (+1) [Stun] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus1Stun, newDeck, [basicCards.plus1]);
     return newDeck;
   },
   'Replace one (+1) with one (+3) card': (deck: Card[]) => {
@@ -86,12 +118,27 @@ export const hatchetActions = {
     removeCard(CardId.plus1, newDeck, [hatchetCards.plus3]);
     return newDeck;
   },
+  'Undo Replace one (+1) with one (+3) card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus3, newDeck, [basicCards.plus1]);
+    return newDeck;
+  },
   'Add one (+2) Air card': (deck: Card[]) => {
     return [...deck, hatchetCards.plus2Air];
+  },
+  'Undo Add one (+2) Air card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.hatchetPlus2Air, newDeck);
+    return newDeck;
   },
   // 'Replace one (+0) card with one (+1) [Push 2] card': (deck: Card[]) => {
   //   const newDeck = [...deck];
   //   removeCard(CardId.plus0, newDeck, [hatchetCards.plus1Push2]);
+  //   return newDeck;
+  // },
+  // 'Undo Replace one (+0) card with one (+1) [Push 2] card': (deck: Card[]) => {
+  //   const newDeck = [...deck];
+  //   removeCard(CardId.hatchetPlus1Push2, newDeck, [basicCards.plus0]);
   //   return newDeck;
   // },
 };
@@ -105,12 +152,14 @@ export class Hatchet implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
@@ -118,6 +167,10 @@ export class Hatchet implements Character {
       text: 'Replace one (+0) card with one (+2) [Muddle] card',
       addAction:
         hatchetActions['Replace one (+0) card with one (+2) [Muddle] card'],
+      removeAction:
+        hatchetActions[
+          'Undo Replace one (+0) card with one (+2) [Muddle] card'
+        ],
     },
     {
       name: 'Primary',
@@ -125,6 +178,10 @@ export class Hatchet implements Character {
       text: 'Replace one (+0) card with one (+1) [Poison] card',
       addAction:
         hatchetActions['Replace one (+0) card with one (+1) [Poison] card'],
+      removeAction:
+        hatchetActions[
+          'Undo Replace one (+0) card with one (+1) [Poison] card'
+        ],
     },
     {
       name: 'Primary',
@@ -132,6 +189,8 @@ export class Hatchet implements Character {
       text: 'Replace one (+0) card with one (+1) [Wound] card',
       addAction:
         hatchetActions['Replace one (+0) card with one (+1) [Wound] card'],
+      removeAction:
+        hatchetActions['Undo Replace one (+0) card with one (+1) [Wound] card'],
     },
     {
       name: 'Primary',
@@ -139,12 +198,21 @@ export class Hatchet implements Character {
       text: 'Replace one (+0) card with one (+1) [Immobilize] card',
       addAction:
         hatchetActions['Replace one (+0) card with one (+1) [Immobilize] card'],
+      removeAction:
+        hatchetActions[
+          'Undo Replace one (+0) card with one (+1) [Immobilize] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) card with one (+1) [Push 2] card',
-      // addAction: hatchetActions['']
+      // addAction:
+      //   hatchetActions['Replace one (+0) card with one (+1) [Push 2] card'],
+      // removeAction:
+      //   hatchetActions[
+      //     'Undo Replace one (+0) card with one (+1) [Push 2] card'
+      //   ],
     },
     {
       name: 'Primary',
@@ -152,6 +220,8 @@ export class Hatchet implements Character {
       text: 'Replace one (+0) card with one (+0) [Stun] card',
       addAction:
         hatchetActions['Replace one (+0) card with one (+0) [Stun] card'],
+      removeAction:
+        hatchetActions['Undo Replace one (+0) card with one (+0) [Stun] card'],
     },
     {
       name: 'Primary',
@@ -159,42 +229,50 @@ export class Hatchet implements Character {
       text: 'Replace one (+1) card with one (+1) [Stun] card',
       addAction:
         hatchetActions['Replace one (+1) card with one (+1) [Stun] card'],
+      removeAction:
+        hatchetActions['Undo Replace one (+1) card with one (+1) [Stun] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) Air card',
       addAction: hatchetActions['Add one (+2) Air card'],
+      removeAction: hatchetActions['Undo Add one (+2) Air card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) Air card',
       addAction: hatchetActions['Add one (+2) Air card'],
+      removeAction: hatchetActions['Undo Add one (+2) Air card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) Air card',
       addAction: hatchetActions['Add one (+2) Air card'],
+      removeAction: hatchetActions['Undo Add one (+2) Air card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+1) with one (+3) card',
       addAction: hatchetActions['Replace one (+1) with one (+3) card'],
+      removeAction: hatchetActions['Undo Replace one (+1) with one (+3) card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+1) with one (+3) card',
       addAction: hatchetActions['Replace one (+1) with one (+3) card'],
+      removeAction: hatchetActions['Undo Replace one (+1) with one (+3) card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+1) with one (+3) card',
       addAction: hatchetActions['Replace one (+1) with one (+3) card'],
+      removeAction: hatchetActions['Undo Replace one (+1) with one (+3) card'],
     },
   ];
 }

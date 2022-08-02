@@ -1,4 +1,4 @@
-import { CardId, Card } from '../deck/basic-deck';
+import { CardId, Card, basicCards } from '../deck/basic-deck';
 import { Character, Perk } from './character';
 import { BasicPerkAction, removeCard } from './perk-actions';
 
@@ -49,11 +49,26 @@ export const elementalistActions = {
   'Add one (+0) [Add Target] card': (deck: Card[]) => {
     return [...deck, elementalistCards.plus0AddTarget];
   },
+  'Undo Add one (+0) [Add Target] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus0AddTarget, newDeck);
+    return newDeck;
+  },
   'Add one (+0) [Stun] card': (deck: Card[]) => {
     return [...deck, elementalistCards.plus0Stun];
   },
+  'Undo Add one (+0) [Stun] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus0Stun, newDeck);
+    return newDeck;
+  },
   'Add one (+1) [Wound] card': (deck: Card[]) => {
     return [...deck, elementalistCards.plus1Wound];
+  },
+  'Undo Add one (+1) [Wound] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus1Wound, newDeck);
+    return newDeck;
   },
   'Add three (+0) [Fire] cards': (deck: Card[]) => {
     return [
@@ -63,6 +78,13 @@ export const elementalistActions = {
       elementalistCards.plus0Fire,
     ];
   },
+  'Undo Add three (+0) [Fire] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus0Fire, newDeck);
+    removeCard(CardId.elementalistPlus0Fire, newDeck);
+    removeCard(CardId.elementalistPlus0Fire, newDeck);
+    return newDeck;
+  },
   'Add three (+0) [Ice] cards': (deck: Card[]) => {
     return [
       ...deck,
@@ -70,6 +92,13 @@ export const elementalistActions = {
       elementalistCards.plus0Ice,
       elementalistCards.plus0Ice,
     ];
+  },
+  'Undo Add three (+0) [Ice] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus0Ice, newDeck);
+    removeCard(CardId.elementalistPlus0Ice, newDeck);
+    removeCard(CardId.elementalistPlus0Ice, newDeck);
+    return newDeck;
   },
   'Add three (+0) [Air] cards': (deck: Card[]) => {
     return [
@@ -79,6 +108,13 @@ export const elementalistActions = {
       elementalistCards.plus0Air,
     ];
   },
+  'Undo Add three (+0) [Air] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus0Air, newDeck);
+    removeCard(CardId.elementalistPlus0Air, newDeck);
+    removeCard(CardId.elementalistPlus0Air, newDeck);
+    return newDeck;
+  },
   'Add three (+0) [Earth] cards': (deck: Card[]) => {
     return [
       ...deck,
@@ -87,6 +123,13 @@ export const elementalistActions = {
       elementalistCards.plus0Earth,
     ];
   },
+  'Undo Add three (+0) [Earth] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus0Earth, newDeck);
+    removeCard(CardId.elementalistPlus0Earth, newDeck);
+    removeCard(CardId.elementalistPlus0Earth, newDeck);
+    return newDeck;
+  },
   'Add two (+1) [Push 1] cards': (deck: Card[]) => {
     return [
       ...deck,
@@ -94,11 +137,24 @@ export const elementalistActions = {
       elementalistCards.plus1Push1,
     ];
   },
+  'Undo Add two (+1) [Push 1] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    removeCard(CardId.elementalistPlus1Push1, newDeck);
+    removeCard(CardId.elementalistPlus1Push1, newDeck);
+    return newDeck;
+  },
   'Replace two (+0) cards with one (+0) [Fire] card and one (+0) [Earth] card':
     (deck: Card[]) => {
       const newDeck = [...deck];
       removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Fire]);
       removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Earth]);
+      return newDeck;
+    },
+  'Undo Replace two (+0) cards with one (+0) [Fire] card and one (+0) [Earth] card':
+    (deck: Card[]) => {
+      const newDeck = [...deck];
+      removeCard(CardId.elementalistPlus0Fire, newDeck, [basicCards.plus0]);
+      removeCard(CardId.elementalistPlus0Earth, newDeck, [basicCards.plus0]);
       return newDeck;
     },
   'Replace two (+0) cards with one (+0) [Ice] card and one (+0) [Air] card': (
@@ -109,6 +165,13 @@ export const elementalistActions = {
     removeCard(CardId.plus0, newDeck, [elementalistCards.plus0Air]);
     return newDeck;
   },
+  'Undo Replace two (+0) cards with one (+0) [Ice] card and one (+0) [Air] card':
+    (deck: Card[]) => {
+      const newDeck = [...deck];
+      removeCard(CardId.elementalistPlus0Ice, newDeck, [basicCards.plus0]);
+      removeCard(CardId.elementalistPlus0Air, newDeck, [basicCards.plus0]);
+      return newDeck;
+    },
 };
 
 export class Elementalist implements Character {
@@ -120,54 +183,63 @@ export class Elementalist implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) card with one (+2) card',
       addAction: BasicPerkAction['Replace one +0 with one +2 card'],
+      removeAction: BasicPerkAction['Undo Replace one +0 with one +2 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (+0) card with one (+2) card',
       addAction: BasicPerkAction['Replace one +0 with one +2 card'],
+      removeAction: BasicPerkAction['Undo Replace one +0 with one +2 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three (+0) [Fire] cards',
       addAction: elementalistActions['Add three (+0) [Fire] cards'],
+      removeAction: elementalistActions['Undo Add three (+0) [Fire] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three (+0) [Ice] cards',
       addAction: elementalistActions['Add three (+0) [Ice] cards'],
+      removeAction: elementalistActions['Undo Add three (+0) [Ice] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three (+0) [Air] cards',
       addAction: elementalistActions['Add three (+0) [Air] cards'],
+      removeAction: elementalistActions['Undo Add three (+0) [Air] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three (+0) [Earth] cards',
       addAction: elementalistActions['Add three (+0) [Earth] cards'],
+      removeAction: elementalistActions['Undo Add three (+0) [Earth] cards'],
     },
     {
       name: 'Primary',
@@ -176,6 +248,10 @@ export class Elementalist implements Character {
       addAction:
         elementalistActions[
           'Replace two (+0) cards with one (+0) [Fire] card and one (+0) [Earth] card'
+        ],
+      removeAction:
+        elementalistActions[
+          'Undo Replace two (+0) cards with one (+0) [Fire] card and one (+0) [Earth] card'
         ],
     },
     {
@@ -186,30 +262,38 @@ export class Elementalist implements Character {
         elementalistActions[
           'Replace two (+0) cards with one (+0) [Ice] card and one (+0) [Air] card'
         ],
+      removeAction:
+        elementalistActions[
+          'Undo Replace two (+0) cards with one (+0) [Ice] card and one (+0) [Air] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two (+1) [Push 1] cards',
       addAction: elementalistActions['Add two (+1) [Push 1] cards'],
+      removeAction: elementalistActions['Undo Add two (+1) [Push 1] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Wound] card',
       addAction: elementalistActions['Add one (+1) [Wound] card'],
+      removeAction: elementalistActions['Undo Add one (+1) [Wound] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+0) [Stun] card',
       addAction: elementalistActions['Add one (+0) [Stun] card'],
+      removeAction: elementalistActions['Undo Add one (+0) [Stun] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+0) [Add Target] card',
       addAction: elementalistActions['Add one (+0) [Add Target] card'],
+      removeAction: elementalistActions['Undo Add one (+0) [Add Target] card'],
     },
   ];
 }

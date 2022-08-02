@@ -10,7 +10,7 @@ import { basicCards, basicDeck, Card, CardId } from '../deck/basic-deck';
   styleUrls: ['./class.component.scss'],
 })
 export class ClassComponent implements OnInit {
-  characterClass: Character | undefined;
+  characterClass: Character;
   deck: Card[] = [];
   pulledCards: Card[] = [];
   perkActionsRan: any[] = [];
@@ -81,18 +81,29 @@ export class ClassComponent implements OnInit {
     if (perk.completed && perk.addAction) {
       const success = perk.addAction([...this.deck]);
       if (!success) {
-        alert('Failure');
-        console.log(success);
+        this.onActionFailure(perk);
         return;
       }
       this.deck = this.shuffle(success);
       this.perkActionsRan.push(perk.addAction);
-      console.log(this.deck);
     } else if (perk.removeAction) {
       const perkRemoved = perk.removeAction([...this.deck]);
+      if (!perkRemoved) {
+        this.onActionFailure(perk);
+        return;
+      }
       this.deck = this.shuffle(perkRemoved);
       this.perkActionsRan.push(perk.removeAction);
-      console.log('Perk Removed', this.deck);
     }
+  }
+
+  private onActionFailure(perk: Perk) {
+    this.snackBar.open('Action Unavailable', undefined, {
+      duration: 3000,
+      panelClass: 'shuffleComplete',
+    });
+    setTimeout(() => {
+      perk.completed = !perk.completed;
+    });
   }
 }
