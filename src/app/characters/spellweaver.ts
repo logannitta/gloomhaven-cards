@@ -1,6 +1,6 @@
 import { CardId, Card, basicCards } from '../deck/basic-deck';
 import { Character, Perk } from './character';
-import { BasicPerkAction } from './perk-actions';
+import { BasicPerkAction, removeCard } from './perk-actions';
 
 export const spellweaverCards = {
   plus0Stun: {
@@ -59,23 +59,87 @@ export const spellweaverActions = {
   'Add one (+0) [Stun] card': (deck: Card[]) => {
     return [...deck, spellweaverCards.plus0Stun];
   },
+  'Undo Add one (+0) [Stun] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverPlus0Stun, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add two (+1) cards': (deck: Card[]) => {
     return [...deck, basicCards.plus1, basicCards.plus1];
+  },
+  'Undo Add two (+1) cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.plus1, newDeck);
+      removeCard(CardId.plus1, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
   },
   'Add one (+1) [Wound] card': (deck: Card[]) => {
     return [...deck, spellweaverCards.plus1Wound];
   },
+  'Undo Add one (+1) [Wound] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverPlus1Wound, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add one (+1) [Immobilize] card': (deck: Card[]) => {
     return [...deck, spellweaverCards.plus1Immobilize];
+  },
+  'Undo Add one (+1) [Immobilize] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverPlus1Immobilize, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
   },
   'Add one (+1) [Curse] card': (deck: Card[]) => {
     return [...deck, spellweaverCards.plus1Curse];
   },
+  'Undo Add one (+1) [Curse] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverPlus1Curse, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add one (+2) [Fire] card': (deck: Card[]) => {
     return [...deck, spellweaverCards.plus2Fire];
   },
+  'Undo Add one (+2) [Fire] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverPlus2Fire, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add one (+2) [Ice] card': (deck: Card[]) => {
     return [...deck, spellweaverCards.plus2Ice];
+  },
+  'Undo Add one (+2) [Ice] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverPlus2Ice, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
   },
   'Add one rolling [Earth] card and one rolling [Air] card': (deck: Card[]) => {
     return [
@@ -83,6 +147,18 @@ export const spellweaverActions = {
       spellweaverCards.rollingEarth,
       spellweaverCards.rollingAir,
     ];
+  },
+  'Undo Add one rolling [Earth] card and one rolling [Air] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverRollingEarth, newDeck);
+      removeCard(CardId.spellweaverRollingAir, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
   },
   'Add one rolling [Light] card and one rolling [Dark] card': (
     deck: Card[]
@@ -92,6 +168,18 @@ export const spellweaverActions = {
       spellweaverCards.rollingLight,
       spellweaverCards.rollingDark,
     ];
+  },
+  'Undo Add one rolling [Light] card and one rolling [Dark] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.spellweaverRollingLight, newDeck);
+      removeCard(CardId.spellweaverRollingDark, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
   },
 };
 
@@ -104,78 +192,91 @@ export class Spellweaver implements Character {
       completed: false,
       text: 'Remove four (+0) cards',
       addAction: BasicPerkAction['Remove four +0 cards'],
+      removeAction: BasicPerkAction['Undo Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two (+1) cards',
       addAction: spellweaverActions['Add two (+1) cards'],
+      removeAction: spellweaverActions['Undo Add two (+1) cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two (+1) cards',
       addAction: spellweaverActions['Add two (+1) cards'],
+      removeAction: spellweaverActions['Undo Add two (+1) cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+0) [Stun] card',
       addAction: spellweaverActions['Add one (+0) [Stun] card'],
+      removeAction: spellweaverActions['Undo Add one (+0) [Stun] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Wound] card',
       addAction: spellweaverActions['Add one (+1) [Wound] card'],
+      removeAction: spellweaverActions['Undo Add one (+1) [Wound] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Immobilize] card',
       addAction: spellweaverActions['Add one (+1) [Immobilize] card'],
+      removeAction: spellweaverActions['Undo Add one (+1) [Immobilize] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Curse] card',
       addAction: spellweaverActions['Add one (+1) [Curse] card'],
+      removeAction: spellweaverActions['Undo Add one (+1) [Curse] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Fire] card',
       addAction: spellweaverActions['Add one (+2) [Fire] card'],
+      removeAction: spellweaverActions['Undo Add one (+2) [Fire] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Fire] card',
       addAction: spellweaverActions['Add one (+2) [Fire] card'],
+      removeAction: spellweaverActions['Undo Add one (+2) [Fire] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Ice] card',
       addAction: spellweaverActions['Add one (+2) [Ice] card'],
+      removeAction: spellweaverActions['Undo Add one (+2) [Ice] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+2) [Ice] card',
       addAction: spellweaverActions['Add one (+2) [Ice] card'],
+      removeAction: spellweaverActions['Undo Add one (+2) [Ice] card'],
     },
     {
       name: 'Primary',
@@ -185,6 +286,10 @@ export class Spellweaver implements Character {
         spellweaverActions[
           'Add one rolling [Earth] card and one rolling [Air] card'
         ],
+      removeAction:
+        spellweaverActions[
+          'Undo Add one rolling [Earth] card and one rolling [Air] card'
+        ],
     },
     {
       name: 'Primary',
@@ -193,6 +298,10 @@ export class Spellweaver implements Character {
       addAction:
         spellweaverActions[
           'Add one rolling [Light] card and one rolling [Dark] card'
+        ],
+      removeAction:
+        spellweaverActions[
+          'Undo Add one rolling [Light] card and one rolling [Dark] card'
         ],
     },
   ];

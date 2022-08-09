@@ -1,4 +1,4 @@
-import { CardId, Card } from '../deck/basic-deck';
+import { CardId, Card, basicCards } from '../deck/basic-deck';
 import { Character, Perk } from './character';
 import { BasicPerkAction, removeCard } from './perk-actions';
 
@@ -39,34 +39,113 @@ export const redguardActions = {
   'Add one (+1) [Fire and Light] card': (deck: Card[]) => {
     return [...deck, redguardCards.plus1FireLight];
   },
+  'Undo Add one (+1) [Fire and Light] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.redguardPlus1FireLight, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add one (+1) [Shield 1 Self] card': (deck: Card[]) => {
     return [...deck, redguardCards.plus1Shield1Self];
   },
+  'Undo Add one (+1) [Shield 1 Self] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.redguardPlus1Shield1Self, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Replace one (+1) card with one (+2) [Fire] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [redguardCards.plus2Fire]);
+    try {
+      removeCard(CardId.plus1, newDeck, [redguardCards.plus2Fire]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+1) card with one (+2) [Fire] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.redguardPlus2Fire, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+1) card with one (+2) [Light] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck, [redguardCards.plus2Light]);
+    try {
+      removeCard(CardId.plus1, newDeck, [redguardCards.plus2Light]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+1) card with one (+2) [Light] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.redguardPlus2Light, newDeck, [basicCards.plus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Immobilize] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [redguardCards.plus1Immobilize]);
+    try {
+      removeCard(CardId.plus0, newDeck, [redguardCards.plus1Immobilize]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) card with one (+1) [Immobilize] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.redguardPlus1Immobilize, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) card with one (+1) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [redguardCards.plus1Wound]);
+    try {
+      removeCard(CardId.plus0, newDeck, [redguardCards.plus1Wound]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) card with one (+1) [Wound] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.redguardPlus1Wound, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Remove one (-2) card and one (+1) card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus2, newDeck);
-    removeCard(CardId.plus1, newDeck);
+    try {
+      removeCard(CardId.minus2, newDeck);
+      removeCard(CardId.plus1, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
+  },
+  'Undo Remove one (-2) card and one (+1) card': (deck: Card[]) => {
+    return [...deck, basicCards.minus2, basicCards.plus1];
   },
 };
 
@@ -79,30 +158,36 @@ export class RedGuard implements Character {
       completed: false,
       text: 'Remove four (+0) cards',
       addAction: BasicPerkAction['Remove four +0 cards'],
+      removeAction: BasicPerkAction['Undo Remove four +0 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove one (-2) card and one (+1) card',
       addAction: redguardActions['Remove one (-2) card and one (+1) card'],
+      removeAction:
+        redguardActions['Undo Remove one (-2) card and one (+1) card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Replace one (-1) card with one (+1) card',
       addAction: BasicPerkAction['Replace one -1 with one +1 card'],
+      removeAction: BasicPerkAction['Undo Replace one -1 with one +1 card'],
     },
     {
       name: 'Primary',
@@ -110,6 +195,8 @@ export class RedGuard implements Character {
       text: 'Replace one (+1) card with one (+2) [Fire] card',
       addAction:
         redguardActions['Replace one (+1) card with one (+2) [Fire] card'],
+      removeAction:
+        redguardActions['Undo Replace one (+1) card with one (+2) [Fire] card'],
     },
     {
       name: 'Primary',
@@ -117,6 +204,8 @@ export class RedGuard implements Character {
       text: 'Replace one (+1) card with one (+2) [Fire] card',
       addAction:
         redguardActions['Replace one (+1) card with one (+2) [Fire] card'],
+      removeAction:
+        redguardActions['Undo Replace one (+1) card with one (+2) [Fire] card'],
     },
     {
       name: 'Primary',
@@ -124,6 +213,10 @@ export class RedGuard implements Character {
       text: 'Replace one (+1) card with one (+2) [Light] card',
       addAction:
         redguardActions['Replace one (+1) card with one (+2) [Light] card'],
+      removeAction:
+        redguardActions[
+          'Undo Replace one (+1) card with one (+2) [Light] card'
+        ],
     },
     {
       name: 'Primary',
@@ -131,30 +224,38 @@ export class RedGuard implements Character {
       text: 'Replace one (+1) card with one (+2) [Light] card',
       addAction:
         redguardActions['Replace one (+1) card with one (+2) [Light] card'],
+      removeAction:
+        redguardActions[
+          'Undo Replace one (+1) card with one (+2) [Light] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Fire and Light] card',
       addAction: redguardActions['Add one (+1) [Fire and Light] card'],
+      removeAction: redguardActions['Undo Add one (+1) [Fire and Light] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Fire and Light] card',
       addAction: redguardActions['Add one (+1) [Fire and Light] card'],
+      removeAction: redguardActions['Undo Add one (+1) [Fire and Light] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Shield 1 Self] card',
       addAction: redguardActions['Add one (+1) [Shield 1 Self] card'],
+      removeAction: redguardActions['Undo Add one (+1) [Shield 1 Self] card'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add one (+1) [Shield 1 Self] card',
       addAction: redguardActions['Add one (+1) [Shield 1 Self] card'],
+      removeAction: redguardActions['Undo Add one (+1) [Shield 1 Self] card'],
     },
     {
       name: 'Primary',
@@ -164,6 +265,10 @@ export class RedGuard implements Character {
         redguardActions[
           'Replace one (+0) card with one (+1) [Immobilize] card'
         ],
+      removeAction:
+        redguardActions[
+          'Undo Replace one (+0) card with one (+1) [Immobilize] card'
+        ],
     },
     {
       name: 'Primary',
@@ -171,6 +276,10 @@ export class RedGuard implements Character {
       text: 'Replace one (+0) card with one (+1) [Wound] card',
       addAction:
         redguardActions['Replace one (+0) card with one (+1) [Wound] card'],
+      removeAction:
+        redguardActions[
+          'Undo Replace one (+0) card with one (+1) [Wound] card'
+        ],
     },
   ];
 }

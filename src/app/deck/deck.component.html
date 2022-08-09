@@ -1,5 +1,9 @@
 <div class="flex-container">
-  <button mat-stroked-button (click)="drawCard()">
+  <button
+    mat-stroked-button
+    (click)="drawCard()"
+    [disabled]="deck.length === 0"
+  >
     <img src="assets/cards/CardBack.png" alt="" />
   </button>
 </div>

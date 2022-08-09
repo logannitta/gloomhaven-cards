@@ -1,4 +1,4 @@
-import { CardId, Card } from '../deck/basic-deck';
+import { CardId, Card, basicCards } from '../deck/basic-deck';
 import { Character, Perk } from './character';
 import { BasicPerkAction, removeCard } from './perk-actions';
 
@@ -58,48 +58,166 @@ export const soothsingerCards = {
 export const soothsingerActions = {
   'Replace one (-1) cards with one (+0) [Stun] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus1, newDeck, [soothsingerCards.plus0Stun]);
+    try {
+      removeCard(CardId.minus1, newDeck, [soothsingerCards.plus0Stun]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (-1) cards with one (+0) [Stun] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus0Stun, newDeck, [basicCards.minus1]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Remove one (-2) card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.minus2, newDeck);
+    try {
+      removeCard(CardId.minus2, newDeck);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
+  },
+  'Undo Remove one (-2) card': (deck: Card[]) => {
+    return [...deck, basicCards.minus2];
   },
   'Replace two (+1) cards with one (+4) card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus1, newDeck);
-    removeCard(CardId.plus1, newDeck, [soothsingerCards.plus4]);
+    try {
+      removeCard(CardId.plus1, newDeck);
+      removeCard(CardId.plus1, newDeck, [soothsingerCards.plus4]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace two (+1) cards with one (+4) card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus4, newDeck, [
+        basicCards.plus1,
+        basicCards.plus1,
+      ]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) cards with one (+1) [Immobilize] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [soothsingerCards.plus1Immobilize]);
+    try {
+      removeCard(CardId.plus0, newDeck, [soothsingerCards.plus1Immobilize]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) cards with one (+1) [Immobilize] card': (
+    deck: Card[]
+  ) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus1Immobilize, newDeck, [
+        basicCards.plus0,
+      ]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) cards with one (+1) [Disarm] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [soothsingerCards.plus1Disarm]);
+    try {
+      removeCard(CardId.plus0, newDeck, [soothsingerCards.plus1Disarm]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) cards with one (+1) [Disarm] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus1Disarm, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) cards with one (+2) [Wound] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [soothsingerCards.plus2Wound]);
+    try {
+      removeCard(CardId.plus0, newDeck, [soothsingerCards.plus2Wound]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) cards with one (+2) [Wound] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus2Wound, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) cards with one (+2) [Poison] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [soothsingerCards.plus2Poison]);
+    try {
+      removeCard(CardId.plus0, newDeck, [soothsingerCards.plus2Poison]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) cards with one (+2) [Poison] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus2Poison, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) cards with one (+2) [Curse] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [soothsingerCards.plus2Curse]);
+    try {
+      removeCard(CardId.plus0, newDeck, [soothsingerCards.plus2Curse]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) cards with one (+2) [Curse] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus2Curse, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Replace one (+0) cards with one (+3) [Muddle] card': (deck: Card[]) => {
     const newDeck = [...deck];
-    removeCard(CardId.plus0, newDeck, [soothsingerCards.plus3Muddle]);
+    try {
+      removeCard(CardId.plus0, newDeck, [soothsingerCards.plus3Muddle]);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
+  'Undo Replace one (+0) cards with one (+3) [Muddle] card': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerPlus3Muddle, newDeck, [basicCards.plus0]);
+    } catch (error) {
+      return false;
+    }
     return newDeck;
   },
   'Add three rolling (+1) cards': (deck: Card[]) => {
@@ -110,12 +228,33 @@ export const soothsingerActions = {
       soothsingerCards.rollingPlus1,
     ];
   },
+  'Undo Add three rolling (+1) cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerRollingPlus1, newDeck);
+      removeCard(CardId.soothsingerRollingPlus1, newDeck);
+      removeCard(CardId.soothsingerRollingPlus1, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
+  },
   'Add two rolling [Curse] cards': (deck: Card[]) => {
     return [
       ...deck,
       soothsingerCards.rollingCurse,
       soothsingerCards.rollingCurse,
     ];
+  },
+  'Undo Add two rolling [Curse] cards': (deck: Card[]) => {
+    const newDeck = [...deck];
+    try {
+      removeCard(CardId.soothsingerRollingCurse, newDeck);
+      removeCard(CardId.soothsingerRollingCurse, newDeck);
+    } catch (error) {
+      return false;
+    }
+    return newDeck;
   },
 };
 
@@ -128,18 +267,21 @@ export class Soothsinger implements Character {
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove two (-1) cards',
       addAction: BasicPerkAction['Remove two -1 cards'],
+      removeAction: BasicPerkAction['Undo Remove two -1 cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Remove one (-2) card',
       addAction: soothsingerActions['Remove one (-2) card'],
+      removeAction: soothsingerActions['Undo Remove one (-2) card'],
     },
     {
       name: 'Primary',
@@ -147,6 +289,8 @@ export class Soothsinger implements Character {
       text: 'Replace two (+1) cards with one (+4) card',
       addAction:
         soothsingerActions['Replace two (+1) cards with one (+4) card'],
+      removeAction:
+        soothsingerActions['Undo Replace two (+1) cards with one (+4) card'],
     },
     {
       name: 'Primary',
@@ -154,6 +298,8 @@ export class Soothsinger implements Character {
       text: 'Replace two (+1) cards with one (+4) card',
       addAction:
         soothsingerActions['Replace two (+1) cards with one (+4) card'],
+      removeAction:
+        soothsingerActions['Undo Replace two (+1) cards with one (+4) card'],
     },
     {
       name: 'Primary',
@@ -162,6 +308,10 @@ export class Soothsinger implements Character {
       addAction:
         soothsingerActions[
           'Replace one (+0) cards with one (+1) [Immobilize] card'
+        ],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (+0) cards with one (+1) [Immobilize] card'
         ],
     },
     {
@@ -172,6 +322,10 @@ export class Soothsinger implements Character {
         soothsingerActions[
           'Replace one (+0) cards with one (+1) [Disarm] card'
         ],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (+0) cards with one (+1) [Disarm] card'
+        ],
     },
     {
       name: 'Primary',
@@ -179,6 +333,10 @@ export class Soothsinger implements Character {
       text: 'Replace one (+0) cards with one (+2) [Wound] card',
       addAction:
         soothsingerActions['Replace one (+0) cards with one (+2) [Wound] card'],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (+0) cards with one (+2) [Wound] card'
+        ],
     },
     {
       name: 'Primary',
@@ -188,6 +346,10 @@ export class Soothsinger implements Character {
         soothsingerActions[
           'Replace one (+0) cards with one (+2) [Poison] card'
         ],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (+0) cards with one (+2) [Poison] card'
+        ],
     },
     {
       name: 'Primary',
@@ -195,6 +357,10 @@ export class Soothsinger implements Character {
       text: 'Replace one (+0) cards with one (+2) [Curse] card',
       addAction:
         soothsingerActions['Replace one (+0) cards with one (+2) [Curse] card'],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (+0) cards with one (+2) [Curse] card'
+        ],
     },
     {
       name: 'Primary',
@@ -204,6 +370,10 @@ export class Soothsinger implements Character {
         soothsingerActions[
           'Replace one (+0) cards with one (+3) [Muddle] card'
         ],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (+0) cards with one (+3) [Muddle] card'
+        ],
     },
     {
       name: 'Primary',
@@ -211,24 +381,31 @@ export class Soothsinger implements Character {
       text: 'Replace one (-1) cards with one (+0) [Stun] card',
       addAction:
         soothsingerActions['Replace one (-1) cards with one (+0) [Stun] card'],
+      removeAction:
+        soothsingerActions[
+          'Undo Replace one (-1) cards with one (+0) [Stun] card'
+        ],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add three rolling (+1) cards',
       addAction: soothsingerActions['Add three rolling (+1) cards'],
+      removeAction: soothsingerActions['Undo Add three rolling (+1) cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Curse] cards',
       addAction: soothsingerActions['Add two rolling [Curse] cards'],
+      removeAction: soothsingerActions['Undo Add two rolling [Curse] cards'],
     },
     {
       name: 'Primary',
       completed: false,
       text: 'Add two rolling [Curse] cards',
       addAction: soothsingerActions['Add two rolling [Curse] cards'],
+      removeAction: soothsingerActions['Undo Add two rolling [Curse] cards'],
     },
   ];
 }
