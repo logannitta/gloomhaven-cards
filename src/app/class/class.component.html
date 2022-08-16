@@ -4,9 +4,13 @@
 <!-- {{ characterClass?.health }} -->
 <!-- {{ characterClass?.perks | json }} -->
 <div id="perk-list">
+  <button mat-button (click)="perksHidden = !perksHidden">
+    {{ perksHidden ? "Show" : "Hide" }} Perks
+  </button>
   <app-perk-list
     [perks]="characterClass.perks"
     (addOrRemovePerk)="addOrRemovePerk($event)"
+    *ngIf="!perksHidden"
   ></app-perk-list>
 </div>
 <app-deck

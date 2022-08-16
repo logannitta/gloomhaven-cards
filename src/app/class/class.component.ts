@@ -14,6 +14,7 @@ export class ClassComponent implements OnInit {
   deck: Card[] = [];
   pulledCards: Card[] = [];
   perkActionsRan: any[] = [];
+  perksHidden: boolean = true;
 
   constructor(private route: ActivatedRoute, private snackBar: MatSnackBar) {}
 
