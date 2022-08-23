@@ -158,7 +158,9 @@ export const nightshroudActions = {
 
 export class Nightshroud implements Character {
   name = 'Nightshroud';
-  health = 12;
+  image = 'assets/classes/Nightshroud/Nightshroud.png';
+  icon = 'assets/classes/Nightshroud/Eclipse.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -260,7 +260,9 @@ export const soothsingerActions = {
 
 export class Soothsinger implements Character {
   name = 'Soothsinger';
-  health = 12;
+  image = 'assets/classes/Soothsinger/Soothsingerimg.png';
+  icon = 'assets/classes/Soothsinger/Music Notes.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

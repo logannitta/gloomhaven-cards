@@ -1,0 +1,17 @@
+<div class="health-container">
+  <!-- {{ characterClass?.health }} -->
+  <mat-progress-bar
+    mode="determinate"
+    [value]="percentageHealth()"
+    [ngClass]="{
+      green: percentageHealth() >= 66,
+      yellow: percentageHealth() >= 33 && percentageHealth() < 66,
+      red: percentageHealth() < 33
+    }"
+  >
+  </mat-progress-bar>
+  <div class="health">
+    {{ currentHealth }} /
+    {{ health }}
+  </div>
+</div>

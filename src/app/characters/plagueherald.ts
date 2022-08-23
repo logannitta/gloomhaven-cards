@@ -117,7 +117,9 @@ export const PlagueheraldActions = {
 
 export class Plagueherald implements Character {
   name = 'Plagueherald';
-  health = 12;
+  image = 'assets/classes/Plagueherald/Plagueheraldimg.png';
+  icon = 'assets/classes/Plagueherald/Cthulu.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

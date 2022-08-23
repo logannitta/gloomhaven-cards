@@ -88,7 +88,9 @@ export const beastTyrantActions = {
 
 export class BeastTyrant implements Character {
   name = 'Beast Tyrant';
-  health = 12;
+  image = 'assets/classes/BeastTyrant/BeastTyrantimg.png';
+  icon = 'assets/classes/BeastTyrant/Two Minis.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

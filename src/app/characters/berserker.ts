@@ -136,7 +136,9 @@ export const berserkerActions = {
 
 export class Berserker implements Character {
   name = 'Berserker';
-  health = 12;
+  image = 'assets/classes/Berserker/Berserkerimg.png';
+  icon = 'assets/classes/Berserker/Lightning Bolts.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

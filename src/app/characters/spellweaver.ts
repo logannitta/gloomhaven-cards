@@ -185,7 +185,9 @@ export const spellweaverActions = {
 
 export class Spellweaver implements Character {
   name = 'Spellweaver';
-  health = 8;
+  image = 'assets/classes/Spellweaver/Spellweaverimg.png';
+  icon = 'assets/classes/Spellweaver/Spellweaver.png';
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
   perks: Perk[] = [
     {
       name: 'Primary',

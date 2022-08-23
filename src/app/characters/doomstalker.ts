@@ -154,7 +154,9 @@ export const doomstalkerActions = {
 
 export class Doomstalker implements Character {
   name = 'Doomstalker';
-  health = 12;
+  image = 'assets/classes/Doomstalker/Doomstalkerimg.png';
+  icon = 'assets/classes/Doomstalker/Angry Face.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

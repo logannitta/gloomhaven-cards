@@ -150,7 +150,9 @@ export const demolitionistActions = {
 
 export class Demolitionist implements Character {
   name = 'Demolitionist';
-  health = 12;
+  image = 'assets/classes/Demolitionist/Demolitionistimg.png';
+  icon = 'assets/classes/Demolitionist/Demolitionist.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -11,6 +11,8 @@ import { basicCards, basicDeck, Card, CardId } from '../deck/basic-deck';
 })
 export class ClassComponent implements OnInit {
   characterClass: Character;
+  characterLevel: number = 1;
+  image?: string;
   deck: Card[] = [];
   pulledCards: Card[] = [];
   perkActionsRan: any[] = [];
@@ -22,7 +24,7 @@ export class ClassComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const className = params['characterClass'];
       this.characterClass = new CharacterMap[className]();
-      console.log(this.characterClass);
+      this.characterLevel = 1;
       this.deck = this.shuffle([...basicDeck]);
       this.pulledCards = [];
       this.perkActionsRan = [];
@@ -53,7 +55,6 @@ export class ClassComponent implements OnInit {
     this.perkActionsRan.forEach((fn: Function) => (deck = fn(deck)));
     this.deck = this.shuffle([...deck, ...blessingsAndCurses]);
 
-    console.log(this.deck);
     this.snackBar.open('Shuffled', undefined, {
       duration: 3000,
       panelClass: 'shuffleComplete',

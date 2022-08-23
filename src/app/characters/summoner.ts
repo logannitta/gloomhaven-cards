@@ -131,7 +131,9 @@ export const summonerActions = {
 
 export class Summoner implements Character {
   name = 'Summoner';
-  health = 12;
+  image = 'assets/classes/Summoner/Summonerimg.png';
+  icon = 'assets/classes/Summoner/Circles.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

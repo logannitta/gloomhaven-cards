@@ -122,7 +122,9 @@ export const sunkeeperActions = {
 
 export class Sunkeeper implements Character {
   name = 'Sunkeeper';
-  health = 12;
+  image = 'assets/classes/Sunkeeper/Sunkeeperimg.png';
+  icon = 'assets/classes/Sunkeeper/Sun.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

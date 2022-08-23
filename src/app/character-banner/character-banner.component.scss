@@ -1,0 +1,33 @@
+div {
+  font-family: "Pirata One", cursive;
+  font-size: x-large;
+}
+
+#banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid rgb(162, 92, 92);
+  height: auto;
+  padding: 5px;
+}
+
+#character-image {
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+}
+
+#character-name {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  padding: 10px;
+}
+
+#character-icon {
+  width: 10%;
+  img {
+    width: 100%;
+  }
+}

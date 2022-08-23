@@ -32,7 +32,9 @@ export interface Perk {
 
 export interface Character {
   name: string;
-  health: number;
+  image?: string;
+  icon?: string;
+  health: number[];
   perks: Perk[];
 }
 

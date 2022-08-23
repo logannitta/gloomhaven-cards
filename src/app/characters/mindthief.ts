@@ -178,7 +178,9 @@ export const mindthiefActions = {
 
 export class Mindthief implements Character {
   name = 'Mindthief';
-  health = 12;
+  image = 'assets/classes/Mindthief/Mindthiefimg.png';
+  icon = 'assets/classes/Mindthief/Mindthief.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

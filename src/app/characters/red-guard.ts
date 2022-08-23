@@ -151,7 +151,9 @@ export const redguardActions = {
 
 export class RedGuard implements Character {
   name = 'Red Guard';
-  health = 12;
+  image = 'assets/classes/RedGuard/RedGuard.png';
+  icon = 'assets/classes/RedGuard/Red Guard.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

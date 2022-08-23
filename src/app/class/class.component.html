@@ -1,8 +1,15 @@
-<div id="character-name">
+<app-character-banner [characterClass]="characterClass"></app-character-banner>
+<!-- <div id="character-name">
   {{ characterClass?.name }}
-</div>
-<!-- {{ characterClass?.health }} -->
-<!-- {{ characterClass?.perks | json }} -->
+</div> -->
+<!-- <div>
+  <img [src]="characterClass.image" alt="" />
+</div> -->
+<!-- <div>
+  <app-health-tracker
+    [health]="characterClass.health[characterLevel - 1]"
+  ></app-health-tracker>
+</div> -->
 <div id="perk-list">
   <button mat-button (click)="perksHidden = !perksHidden">
     {{ perksHidden ? "Show" : "Hide" }} Perks

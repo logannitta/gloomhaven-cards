@@ -213,7 +213,9 @@ export const hatchetActions = {
 
 export class Hatchet implements Character {
   name = 'Hatchet';
-  health = 12;
+  // image = 'assets/classes/Hatchet/Hatchetimg.png';
+  icon = 'assets/classes/Hatchet/Hatchet.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

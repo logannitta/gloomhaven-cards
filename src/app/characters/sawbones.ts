@@ -113,7 +113,9 @@ export const sawbonesActions = {
 
 export class Sawbones implements Character {
   name = 'Sawbones';
-  health = 12;
+  image = 'assets/classes/Sawbones/Sawbonesimg.png';
+  icon = 'assets/classes/Sawbones/Saw.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -281,7 +281,9 @@ export const divinerActions = {
 
 export class Diviner implements Character {
   name = 'Diviner';
-  health = 12;
+  // image = 'assets/classes/Diviner/Divinerimg.png';
+  icon = 'assets/classes/Diviner/Diviner.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

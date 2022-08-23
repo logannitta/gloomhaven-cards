@@ -129,7 +129,9 @@ export const quartermasterActions = {
 
 export class Quartermaster implements Character {
   name = 'Quartermaster';
-  health = 12;
+  image = 'assets/classes/Quartermaster/Quartermasterimg.png';
+  icon = 'assets/classes/Quartermaster/Three Spears.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

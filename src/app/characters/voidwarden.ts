@@ -161,7 +161,9 @@ export const voidwardenActions = {
 
 export class Voidwarden implements Character {
   name = 'Voidwarden';
-  health = 12;
+  image = 'assets/classes/Voidwarden/Voidwardenimg.png';
+  icon = 'assets/classes/Voidwarden/Voidwarden.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

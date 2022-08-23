@@ -144,7 +144,9 @@ export const bruteActions = {
 
 export class Brute implements Character {
   name = 'Brute';
-  health = 8;
+  image = 'assets/classes/Brute/Bruteimg.png';
+  icon = 'assets/classes/Brute/Brute.png';
+  health = [10, 12, 14, 16, 18, 20, 22, 24, 26];
   perks: Perk[] = [
     {
       name: 'Primary',

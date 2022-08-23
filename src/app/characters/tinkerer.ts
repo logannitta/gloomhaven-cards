@@ -150,7 +150,9 @@ export const tinkererActions = {
 
 export class Tinkerer implements Character {
   name = 'Tinkerer';
-  health = 12;
+  image = 'assets/classes/Tinkerer/Tinkererimg.png';
+  icon = 'assets/classes/Tinkerer/Tinkerer.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',

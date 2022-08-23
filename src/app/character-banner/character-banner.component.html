@@ -1,0 +1,14 @@
+<div id="banner">
+  <div id="character-image">
+    <img [src]="characterClass.image" alt="" />
+    <app-health-tracker
+      [health]="characterClass.health[characterLevel - 1]"
+    ></app-health-tracker>
+  </div>
+  <div id="character-name">
+    {{ characterClass?.name }}
+  </div>
+  <div id="character-icon">
+    <img [src]="characterClass.icon" alt="" />
+  </div>
+</div>

@@ -111,7 +111,9 @@ export const scoundrelActions = {
 
 export class Scoundrel implements Character {
   name = 'Scoundrel';
-  health = 8;
+  image = 'assets/classes/Scoundrel/Scoundrelimg.png';
+  icon = 'assets/classes/Scoundrel/Scoundrel.png';
+  health = [8];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -224,7 +224,9 @@ export const elementalistActions = {
 
 export class Elementalist implements Character {
   name = 'Elementalist';
-  health = 12;
+  image = 'assets/classes/Elementalist/Elementalistimg.png';
+  icon = 'assets/classes/Elementalist/Triangles.png';
+  health = [12];
   perks: Perk[] = [
     {
       name: 'Primary',
