@@ -16,6 +16,10 @@ div {
   display: flex;
   flex-direction: column;
   width: 10%;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 #character-name {
