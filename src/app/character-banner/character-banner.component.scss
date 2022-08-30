@@ -22,11 +22,15 @@ div {
   }
 }
 
-#character-name {
+.character-info {
   display: flex;
   flex-direction: column;
   width: 80%;
   padding: 10px;
+  .tickers {
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 #character-icon {

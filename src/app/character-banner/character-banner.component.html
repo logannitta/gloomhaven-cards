@@ -1,14 +1,24 @@
 <div id="banner">
   <div id="character-image">
-    <img [src]="characterClass.image" alt="" />
+    <img [src]="characterClass?.image" alt="" />
     <app-health-tracker
-      [health]="characterClass.health[characterLevel - 1]"
+      [health]="currentHealth"
+      [maxHealth]="maxHealth"
     ></app-health-tracker>
   </div>
-  <div id="character-name">
-    {{ characterClass?.name }}
+  <div class="character-info">
+    <div>
+      {{ characterClass?.name }}
+    </div>
+    <div class="tickers">
+      <app-health-ticker
+        (addHealthClicked)="addHealthClickedHandler()"
+        (minusHealthClicked)="minusHealthClickedHandler()"
+      ></app-health-ticker>
+      <!-- <app-experience-tracker></app-experience-tracker> -->
+    </div>
   </div>
   <div id="character-icon">
-    <img [src]="characterClass.icon" alt="" />
+    <img [src]="characterClass?.icon" alt="" />
   </div>
 </div>

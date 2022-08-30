@@ -15,6 +15,7 @@ import {
 })
 export class HealthTrackerComponent implements OnInit, OnChanges {
   @Input() health: number;
+  @Input() maxHealth: number;
 
   currentHealth: number;
 
@@ -30,6 +31,6 @@ export class HealthTrackerComponent implements OnInit, OnChanges {
   }
 
   public percentageHealth() {
-    return (this.currentHealth / this.health) * 100;
+    return (this.currentHealth / this.maxHealth) * 100;
   }
 }

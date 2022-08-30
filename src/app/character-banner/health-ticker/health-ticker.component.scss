@@ -1,0 +1,27 @@
+#container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .water-drop {
+    font-size: 33px;
+    height: 33px;
+    width: 33px;
+    color: #df5353;
+  }
+
+  .mat-mini-fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button {
+    background-color: #a25c5c;
+    color: white;
+    height: 22px;
+    width: 22px;
+  }
+  section {
+    padding: 4px;
+  }
+}
