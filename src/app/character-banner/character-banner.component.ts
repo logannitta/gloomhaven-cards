@@ -19,6 +19,8 @@ export class CharacterBannerComponent implements OnInit, OnChanges {
   currentHealth: number;
   maxHealth: number;
   characterLevel: number = 1;
+  experience: number = 0;
+  coins: number = 0;
 
   constructor() {}
 
@@ -50,5 +52,13 @@ export class CharacterBannerComponent implements OnInit, OnChanges {
       return alert('Death');
     }
     this.currentHealth--;
+  }
+
+  addExperienceClickedHandler() {
+    this.experience++;
+  }
+
+  addCoinsClickedHandler() {
+    this.coins++;
   }
 }

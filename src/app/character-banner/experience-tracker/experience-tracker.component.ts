@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-experience-tracker',
   templateUrl: './experience-tracker.component.html',
-  styleUrls: ['./experience-tracker.component.scss']
+  styleUrls: ['./experience-tracker.component.scss'],
 })
 export class ExperienceTrackerComponent implements OnInit {
+  @Output() addExperienceClicked = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  experience() {
+    this.addExperienceClicked.emit();
   }
-
 }

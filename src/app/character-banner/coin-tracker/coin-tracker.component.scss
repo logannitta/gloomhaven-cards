@@ -1,14 +1,14 @@
-#container {
+.container {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 2px;
 
-  .water-drop {
+  .monetization_on {
     font-size: 33px;
     height: 33px;
     width: 33px;
-    color: #df5353;
+    color: #f3de66;
   }
 
   .mat-mini-fab {
@@ -18,11 +18,12 @@
   }
 
   button {
-    background-color: #a25c5c;
-    color: white;
+    background-color: #f3de66;
+    color: #2b2b0e;
     height: 22px;
     width: 22px;
   }
+
   section {
     padding: 4px;
   }

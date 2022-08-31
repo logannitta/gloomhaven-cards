@@ -15,7 +15,14 @@
         (addHealthClicked)="addHealthClickedHandler()"
         (minusHealthClicked)="minusHealthClickedHandler()"
       ></app-health-ticker>
-      <!-- <app-experience-tracker></app-experience-tracker> -->
+      <app-experience-tracker
+        (addExperienceClicked)="addExperienceClickedHandler()"
+      ></app-experience-tracker>
+      <div>XP:{{ experience }}</div>
+      <app-coin-tracker
+        (addCoinsClicked)="addCoinsClickedHandler()"
+      ></app-coin-tracker>
+      <div>Gold:{{ coins }}</div>
     </div>
   </div>
   <div id="character-icon">

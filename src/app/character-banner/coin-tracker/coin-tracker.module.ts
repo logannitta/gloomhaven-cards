@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExperienceTrackerComponent } from './experience-tracker.component';
+import { CoinTrackerComponent } from './coin-tracker.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [ExperienceTrackerComponent],
+  declarations: [CoinTrackerComponent],
   imports: [CommonModule, MatButtonModule, MatIconModule],
-  exports: [ExperienceTrackerComponent],
+  exports: [CoinTrackerComponent],
 })
-export class ExperienceTrackerModule {}
+export class CoinTrackerModule {}
