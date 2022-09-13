@@ -38,14 +38,14 @@ div {
       align-items: center;
     }
   }
-}
-
-.level {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: right;
-  padding: 1px;
+  .level {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
+    padding: 1px;
+  }
 }
 
 .character-icon {
