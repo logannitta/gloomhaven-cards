@@ -29,10 +29,7 @@ export class CharacterBannerComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     const { characterClass = null } = changes;
     if (characterClass) {
-      const health =
-        characterClass.currentValue.health[this.characterLevel - 1];
-      this.currentHealth = health;
-      this.maxHealth = health;
+      this.setHealth();
       this.experience = 0;
       this.coins = 0;
     }
@@ -62,5 +59,16 @@ export class CharacterBannerComponent implements OnInit, OnChanges {
 
   addCoinsClickedHandler() {
     this.coins++;
+  }
+
+  changeLevelHandler(level: number) {
+    this.setHealth(level);
+  }
+
+  private setHealth(characterLevel: number = 1) {
+    this.characterLevel = characterLevel;
+    const health = this.characterClass.health[this.characterLevel - 1];
+    this.currentHealth = health;
+    this.maxHealth = health;
   }
 }

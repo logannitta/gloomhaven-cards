@@ -29,6 +29,11 @@
       </div>
     </div>
   </div>
+  <app-level-selector
+    class="level"
+    [characterLevel]="characterLevel"
+    (changeLevel)="changeLevelHandler($event)"
+  ></app-level-selector>
   <div class="character-icon">
     <img [src]="characterClass?.icon" alt="" />
   </div>

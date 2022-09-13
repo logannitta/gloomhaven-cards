@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select Level</mat-label>
+  <mat-select [(ngModel)]="characterLevel" (selectionChange)="selectLevel()">
+    <mat-option [value]="option" *ngFor="let option of level">{{
+      option
+    }}</mat-option>
+  </mat-select>
+</mat-form-field>
