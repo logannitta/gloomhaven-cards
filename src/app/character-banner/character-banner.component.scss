@@ -3,7 +3,7 @@ div {
   font-size: x-large;
 }
 
-#banner {
+.banner {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -12,7 +12,7 @@ div {
   padding: 5px;
 }
 
-#character-image {
+.character-image {
   display: flex;
   flex-direction: column;
   width: 10%;
@@ -34,7 +34,7 @@ div {
   }
 }
 
-#character-icon {
+.character-icon {
   width: 10%;
   img {
     width: 100%;
