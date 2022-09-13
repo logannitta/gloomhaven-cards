@@ -156,7 +156,7 @@ export class Doomstalker implements Character {
   name = 'Doomstalker';
   image = 'assets/classes/Doomstalker/Doomstalkerimg.png';
   icon = 'assets/classes/Doomstalker/Angry Face.png';
-  health = [12];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

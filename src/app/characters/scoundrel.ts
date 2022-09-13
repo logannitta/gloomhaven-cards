@@ -113,7 +113,7 @@ export class Scoundrel implements Character {
   name = 'Scoundrel';
   image = 'assets/classes/Scoundrel/Scoundrelimg.png';
   icon = 'assets/classes/Scoundrel/Scoundrel.png';
-  health = [8];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -138,7 +138,7 @@ export class Berserker implements Character {
   name = 'Berserker';
   image = 'assets/classes/Berserker/Berserkerimg.png';
   icon = 'assets/classes/Berserker/Lightning Bolts.png';
-  health = [12];
+  health = [10, 12, 14, 16, 18, 20, 22, 24, 26];
   perks: Perk[] = [
     {
       name: 'Primary',

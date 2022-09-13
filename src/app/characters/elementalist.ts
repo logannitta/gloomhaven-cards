@@ -226,7 +226,7 @@ export class Elementalist implements Character {
   name = 'Elementalist';
   image = 'assets/classes/Elementalist/Elementalistimg.png';
   icon = 'assets/classes/Elementalist/Triangles.png';
-  health = [12];
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
   perks: Perk[] = [
     {
       name: 'Primary',

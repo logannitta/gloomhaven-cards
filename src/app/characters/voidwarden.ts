@@ -163,7 +163,7 @@ export class Voidwarden implements Character {
   name = 'Voidwarden';
   image = 'assets/classes/Voidwarden/Voidwardenimg.png';
   icon = 'assets/classes/Voidwarden/Voidwarden.png';
-  health = [12];
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
   perks: Perk[] = [
     {
       name: 'Primary',

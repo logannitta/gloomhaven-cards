@@ -124,7 +124,7 @@ export class Sunkeeper implements Character {
   name = 'Sunkeeper';
   image = 'assets/classes/Sunkeeper/Sunkeeperimg.png';
   icon = 'assets/classes/Sunkeeper/Sun.png';
-  health = [12];
+  health = [10, 12, 14, 16, 18, 20, 22, 24, 26];
   perks: Perk[] = [
     {
       name: 'Primary',

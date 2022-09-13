@@ -152,7 +152,7 @@ export class Demolitionist implements Character {
   name = 'Demolitionist';
   image = 'assets/classes/Demolitionist/Demolitionistimg.png';
   icon = 'assets/classes/Demolitionist/Demolitionist.png';
-  health = [12];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -115,7 +115,7 @@ export class Sawbones implements Character {
   name = 'Sawbones';
   image = 'assets/classes/Sawbones/Sawbonesimg.png';
   icon = 'assets/classes/Sawbones/Saw.png';
-  health = [12];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

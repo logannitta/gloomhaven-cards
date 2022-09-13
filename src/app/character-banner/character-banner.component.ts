@@ -33,6 +33,8 @@ export class CharacterBannerComponent implements OnInit, OnChanges {
         characterClass.currentValue.health[this.characterLevel - 1];
       this.currentHealth = health;
       this.maxHealth = health;
+      this.experience = 0;
+      this.coins = 0;
     }
   }
 

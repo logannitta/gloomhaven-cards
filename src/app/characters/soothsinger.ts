@@ -262,7 +262,7 @@ export class Soothsinger implements Character {
   name = 'Soothsinger';
   image = 'assets/classes/Soothsinger/Soothsingerimg.png';
   icon = 'assets/classes/Soothsinger/Music Notes.png';
-  health = [12];
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
   perks: Perk[] = [
     {
       name: 'Primary',

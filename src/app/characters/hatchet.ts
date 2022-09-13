@@ -215,7 +215,7 @@ export class Hatchet implements Character {
   name = 'Hatchet';
   // image = 'assets/classes/Hatchet/Hatchetimg.png';
   icon = 'assets/classes/Hatchet/Hatchet.png';
-  health = [12];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

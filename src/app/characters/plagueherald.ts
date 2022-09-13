@@ -119,7 +119,7 @@ export class Plagueherald implements Character {
   name = 'Plagueherald';
   image = 'assets/classes/Plagueherald/Plagueheraldimg.png';
   icon = 'assets/classes/Plagueherald/Cthulu.png';
-  health = [12];
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
   perks: Perk[] = [
     {
       name: 'Primary',

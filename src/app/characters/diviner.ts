@@ -283,7 +283,7 @@ export class Diviner implements Character {
   name = 'Diviner';
   // image = 'assets/classes/Diviner/Divinerimg.png';
   icon = 'assets/classes/Diviner/Diviner.png';
-  health = [12];
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
   perks: Perk[] = [
     {
       name: 'Primary',

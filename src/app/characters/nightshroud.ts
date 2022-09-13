@@ -160,7 +160,7 @@ export class Nightshroud implements Character {
   name = 'Nightshroud';
   image = 'assets/classes/Nightshroud/Nightshroud.png';
   icon = 'assets/classes/Nightshroud/Eclipse.png';
-  health = [12];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -90,7 +90,8 @@ export class BeastTyrant implements Character {
   name = 'Beast Tyrant';
   image = 'assets/classes/BeastTyrant/BeastTyrantimg.png';
   icon = 'assets/classes/BeastTyrant/Two Minis.png';
-  health = [12];
+  health = [6, 7, 8, 9, 10, 11, 12, 13, 14];
+  // bearHealth = [10, 12, 14, 16, 18, 20, 22, 24, 26];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -152,7 +152,7 @@ export class Tinkerer implements Character {
   name = 'Tinkerer';
   image = 'assets/classes/Tinkerer/Tinkererimg.png';
   icon = 'assets/classes/Tinkerer/Tinkerer.png';
-  health = [12];
+  health = [8, 9, 11, 12, 14, 15, 17, 18, 20];
   perks: Perk[] = [
     {
       name: 'Primary',

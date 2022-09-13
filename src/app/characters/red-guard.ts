@@ -153,7 +153,7 @@ export class RedGuard implements Character {
   name = 'Red Guard';
   image = 'assets/classes/RedGuard/RedGuard.png';
   icon = 'assets/classes/RedGuard/Red Guard.png';
-  health = [12];
+  health = [10, 12, 14, 16, 18, 20, 22, 24, 26];
   perks: Perk[] = [
     {
       name: 'Primary',

@@ -131,7 +131,7 @@ export class Quartermaster implements Character {
   name = 'Quartermaster';
   image = 'assets/classes/Quartermaster/Quartermasterimg.png';
   icon = 'assets/classes/Quartermaster/Three Spears.png';
-  health = [12];
+  health = [10, 12, 14, 16, 18, 20, 22, 24, 26];
   perks: Perk[] = [
     {
       name: 'Primary',
