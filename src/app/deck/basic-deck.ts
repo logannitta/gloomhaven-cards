@@ -160,6 +160,7 @@ export enum CardId {
   voidwardenPlus1Curse,
   voidwardenPlus1Heal1Ally,
   voidwardenPlus0Heal1Ally,
+  deathwalkerPlus2Dark,
 }
 
 export const basicCardIds = [

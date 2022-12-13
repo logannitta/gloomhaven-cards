@@ -21,6 +21,7 @@ import { Hatchet } from './hatchet';
 import { RedGuard } from './red-guard';
 import { Voidwarden } from './voidwarden';
 import { Basic } from './basic';
+import { Deathwalker } from './deathwalker';
 
 export interface Perk {
   name: string;
@@ -62,4 +63,5 @@ export const CharacterMap: { [key: string]: any } = {
   hatchet: Hatchet,
   redGuard: RedGuard,
   voidwarden: Voidwarden,
+  deathwalker: Deathwalker,
 };

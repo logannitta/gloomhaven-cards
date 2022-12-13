@@ -1,0 +1,7 @@
+<app-header [game]="game"></app-header>
+<div
+  class="container"
+  [ngClass]="{ gloom: game === 'gloomhaven', frost: game === 'frosthaven' }"
+>
+  <router-outlet></router-outlet>
+</div>

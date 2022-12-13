@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MenuCloseReason } from '@angular/material/menu/menu';
 
 @Component({
@@ -7,7 +7,9 @@ import { MenuCloseReason } from '@angular/material/menu/menu';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  characters = [
+  @Input() game: string;
+
+  gloomhavenCharacters = [
     {
       text: 'Basic',
       value: 'basic',
@@ -121,9 +123,24 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
+  frosthavenCharacters = [
+    {
+      text: 'Deathwalker',
+      value: 'deathwalker',
+      icon: 'assets/classes/Deathwalker/Deathwalker.png',
+    },
+  ];
+
+  characters = this.gloomhavenCharacters;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.characters =
+      this.game === 'gloomhaven'
+        ? this.gloomhavenCharacters
+        : this.frosthavenCharacters;
+  }
 
   menuClosed(reason: string) {
     console.log(reason);
