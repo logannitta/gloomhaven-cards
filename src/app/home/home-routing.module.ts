@@ -14,7 +14,11 @@ const routes: Routes = [
     component: HomeComponent,
     children: [{ path: ':characterClass', component: ClassComponent }],
   },
-  { path: '**', pathMatch: 'full', redirectTo: 'game-selector' },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: '/game-selector',
+  },
 ];
 
 @NgModule({

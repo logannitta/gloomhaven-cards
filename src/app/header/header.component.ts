@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuCloseReason } from '@angular/material/menu/menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -133,7 +134,7 @@ export class HeaderComponent implements OnInit {
 
   characters = this.gloomhavenCharacters;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.characters =
@@ -144,5 +145,9 @@ export class HeaderComponent implements OnInit {
 
   menuClosed(reason: string) {
     console.log(reason);
+  }
+
+  home() {
+    this.router.navigate(['game-selector']);
   }
 }

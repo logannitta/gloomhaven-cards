@@ -1,12 +1,14 @@
 .gloom {
-  background-color: tan;
+  background-color: #b19c7f;
 }
 
 .frost {
-  background-color: #6dc9eb;
+  background-color: #83acde;
 }
 
 .container {
-  // height: calc(100% - 64px);
-  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
